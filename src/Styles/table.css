@@ -1,0 +1,21 @@
+.Table {
+    background-color: rgb(1, 71, 1);
+    width: 96%;
+    margin-left: 2vw;
+    height: 55vh;
+    display: flex;
+    align-items: center;
+  }
+  .tableCards {
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+    vertical-align: middle;
+    margin-right: 10px; /* this is moving it correctly*/
+    margin-left: 10px;
+    object-fit: scale-down;
+  }
+  .tableCard {
+    max-width: 100%;
+    max-height: 100%;
+  }

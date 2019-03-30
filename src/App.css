@@ -1,32 +1,69 @@
 .App {
   text-align: center;
+  background-color: gray;
+  width: 100vw;
+  height: 98vh;
+  padding-top: 2vh;
+}
+/*background-color: #282c34;*/
+
+.bottom {
+  
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.left {
+  width: 37vw;
+  height: 39vh;
+  background-color: red;
+  float: left;
+  margin-left: 2vw;
+  margin-top: 2vh;
   display: flex;
-  flex-direction: column;
+}
+
+.meter {
+  flex: 1;
+  height: 85%;
+  padding: 1%;
+  background-color: #ddd;
+}
+.power {
+  height: 60%; 
+  background-color: #2196F3;
+}
+
+.myHand{
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: 2%;
+  flex-direction: row;
+}
+.myCardHolder{
+  height: 100%;
+  flex:1;
+  vertical-align: middle;
+  margin-right: 2px;
+  margin-left: 2px;
+  object-fit: contain;
+
 }
 
-.App-link {
-  color: #61dafb;
+.myCard {
+  max-height: 100%;
+  max-width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.right {
+  width: 57vw;
+  height: 39vh;
+  background-color: blue;
+  float: right;
+  margin-right: 2vw;
+  margin-top: 2vh;
+}
+
+.Potentials {
+  background-color: lightblue;
+  flex-grow: 1;
+  margin: 5px;
 }
