@@ -11,9 +11,11 @@
     min-height: 0;
     flex: 1;
     vertical-align: middle;
-    margin-right: 10px; /* this is moving it correctly*/
+    margin-right: 10px;
     margin-left: 10px;
     object-fit: scale-down;
+    display: flex;
+    align-items: center;
   }
   .tableCard {
     max-width: 100%;

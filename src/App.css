@@ -19,6 +19,7 @@
   margin-left: 2vw;
   margin-top: 2vh;
   display: flex;
+  align-items: center;
 }
 
 .meter {
@@ -26,6 +27,8 @@
   height: 85%;
   padding: 1%;
   background-color: #ddd;
+  display: flex;
+  align-items: flex-end;
 }
 .power {
   height: 60%; 
@@ -37,6 +40,7 @@
   align-items: center;
   margin-left: 2%;
   flex-direction: row;
+  height: 100%;
 }
 .myCardHolder{
   height: 100%;
@@ -45,6 +49,8 @@
   margin-right: 2px;
   margin-left: 2px;
   object-fit: contain;
+  display: flex;
+  align-items: center;
 
 }
 
