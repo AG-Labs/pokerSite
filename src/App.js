@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import cardBack from './Images/cardBack.png';
 import PokerTable from './Components/table.js';
+import MySection from './Components/mySection.js';
 import './App.css';
+
 
 
 class App extends Component {
@@ -10,18 +11,7 @@ class App extends Component {
       <div className="App">
       <PokerTable/>
         <div className="bottom">
-          
-          <div className="left">
-            <div className="meter">
-                <div className="power">60%</div>
-            </div>
-
-            <div className="myHand">
-              <div className="myCardHolder"><img src={cardBack} alt = "empty card" className="myCard"></img></div>
-              <div className="myCardHolder"><img src={cardBack} alt = "empty card" className="myCard"></img></div>
-            </div>
-          
-          </div>
+          <MySection/>
 
           <div className="right">
           </div>

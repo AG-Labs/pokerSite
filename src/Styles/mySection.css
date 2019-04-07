@@ -1,0 +1,53 @@
+.left {
+    width: 37vw;
+    height: 39vh;
+    background-color: red;
+    float: left;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+.meter {
+    display: flex;
+    flex: 0 1 0;
+    justify-content: space-around;
+    height: 85%;
+    padding: 1%;
+    background-color: #ddd;
+    align-items: flex-end;
+    margin-left: 2%;
+  }
+.power {
+    height: 60%; 
+    background-color: #2196F3;
+  }
+  
+.myHand{
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    flex-direction: row;
+    height: 100%;
+  }
+.myCardHolder{
+    height: 100%;
+    flex:1;
+    vertical-align: middle;
+    margin-right: 1%;
+    margin-left: 1%;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+  
+  }
+  
+.myCard {
+    max-height: 100%;
+    max-width: 100%;
+  }

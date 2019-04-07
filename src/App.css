@@ -11,54 +11,6 @@
   
 }
 
-.left {
-  width: 37vw;
-  height: 39vh;
-  background-color: red;
-  float: left;
-  margin-left: 2vw;
-  margin-top: 2vh;
-  display: flex;
-  align-items: center;
-}
-
-.meter {
-  flex: 1;
-  height: 85%;
-  padding: 1%;
-  background-color: #ddd;
-  display: flex;
-  align-items: flex-end;
-}
-.power {
-  height: 60%; 
-  background-color: #2196F3;
-}
-
-.myHand{
-  display: flex;
-  align-items: center;
-  margin-left: 2%;
-  flex-direction: row;
-  height: 100%;
-}
-.myCardHolder{
-  height: 100%;
-  flex:1;
-  vertical-align: middle;
-  margin-right: 2px;
-  margin-left: 2px;
-  object-fit: contain;
-  display: flex;
-  align-items: center;
-
-}
-
-.myCard {
-  max-height: 100%;
-  max-width: 100%;
-}
-
 .right {
   width: 57vw;
   height: 39vh;

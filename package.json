@@ -5,7 +5,7 @@
   "dependencies": {
     "images": "^3.0.2",
     "react": "^16.8.6",
-    "react-burger-menu": "^2.6.5",
+    "react-burger-menu": "^2.6.8",
     "react-dom": "^16.8.6",
     "react-scripts": "^2.1.8"
   },
@@ -24,4 +24,5 @@
     "not ie <= 11",
     "not op_mini all"
   ]
+
 }

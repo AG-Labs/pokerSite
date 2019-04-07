@@ -4,13 +4,11 @@
     margin-left: 2vw;
     height: 55vh;
     display: flex;
-    align-items: center;
   }
   .tableCards {
     height: 100%;
     min-height: 0;
     flex: 1;
-    vertical-align: middle;
     margin-right: 10px;
     margin-left: 10px;
     object-fit: scale-down;
