@@ -14,10 +14,12 @@
 .right {
   width: 57vw;
   height: 39vh;
-  background-color: blue;
   float: right;
   margin-right: 2vw;
   margin-top: 2vh;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
 }
 
 .Potentials {

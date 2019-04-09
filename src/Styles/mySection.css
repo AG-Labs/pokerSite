@@ -1,13 +1,16 @@
 .left {
     width: 37vw;
     height: 39vh;
-    background-color: red;
     float: left;
     margin-left: 2vw;
     margin-top: 2vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(1, 71, 1);
   }
   
 .meter {

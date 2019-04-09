@@ -4,6 +4,9 @@
     margin-left: 2vw;
     height: 55vh;
     display: flex;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
   }
   .tableCards {
     height: 100%;

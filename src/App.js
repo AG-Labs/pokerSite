@@ -4,8 +4,12 @@ import MySection from './Components/mySection.js';
 import './App.css';
 
 
-
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {cardFront: null};
+  }
+
   render() {
     return (
       <div className="App">
@@ -14,6 +18,7 @@ class App extends Component {
           <MySection/>
 
           <div className="right">
+            prediction area
           </div>
 
         </div>
