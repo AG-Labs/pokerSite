@@ -37,6 +37,10 @@ const pokerTable = props => {
     const suitHandler = (event) => {
         changePhoto(selectedCard, event.target.id)
 
+
+        let popperRef = document.querySelector('#popup' + selectedCard)
+        popperRef.style.display = 'none'
+
     }
 
     const changePhoto = (photoID, setSuit) => {
