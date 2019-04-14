@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import mergeImages from 'merge-images';
 import Popper from 'popper.js'
 import SuitPopper from './suit-popper.jsx'
@@ -14,37 +14,36 @@ import '../Styles/table.css'
 
 const pokerTable = props => {
 
+    const suits = {
+        club: club,
+        diamond: diamond,
+        heart: heart,
+        spade: spade
+    }
+    const [selectedCard, setSelectedCard] = React.useState('')
+
     const tableClickHandler = (event) => {
-        switch (event.target.id){
-            case 'flop1':
-                changePhoto('flop1')
-                break
-            case 'flop2':
-                changePhoto('flop2')
-                break
-            case 'flop3':
-                changePhoto('flop3')
-                break
-            case 'turn':
-                changePhoto('turn')
-                break
-            case 'river':
-                changePhoto('river')
-                break
-        }
+        setSelectedCard(event.target.id)
+
         let ref = document.querySelector('#' + event.target.id)
         let popperRef = document.querySelector('#popup' + event.target.id)
         popperRef.style.display = 'block'
-        console.log('references',ref, popperRef)
+
         let popper = new Popper(ref, popperRef, {
             placement: 'bottom'
         });
     }
 
-    const changePhoto = (photoID) => {
+    const suitHandler = (event) => {
+        changePhoto(selectedCard, event.target.id)
+
+    }
+
+    const changePhoto = (photoID, setSuit) => {
+        
         mergeImages([
           {src: cardFront, x: 0, y: 0},
-          {src: club, x: 62, y: 100}
+          {src: suits[setSuit], x: 62, y: 100}
         ])
           .then(b64 => {
             document.querySelector('#'+photoID).src = b64
@@ -60,7 +59,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop1'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'flop1'></SuitPopper>               
+                         <SuitPopper id = 'flop1' suitHandler = {suitHandler}></SuitPopper>               
                 </div>
 
                 <div className='tableCards'>
@@ -69,7 +68,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop2'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'flop2'></SuitPopper>
+                         <SuitPopper id = 'flop2' suitHandler = {suitHandler}></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -77,7 +76,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop3'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'flop3'></SuitPopper>
+                         <SuitPopper id = 'flop3' suitHandler = {suitHandler}></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -85,7 +84,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'turn'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'turn'></SuitPopper>
+                         <SuitPopper id = 'turn' suitHandler = {suitHandler}></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -93,7 +92,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'river'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'river'></SuitPopper>
+                         <SuitPopper id = 'river' suitHandler = {suitHandler}></SuitPopper>
                 </div>                
             </div>
  )

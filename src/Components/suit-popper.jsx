@@ -9,10 +9,10 @@ const SuitPopper = props => {
 
     return(
         <div id = {'popup'+props.id} className="popper" style = {{display: 'none'}}>
-            <img src = {heart} className = 'suitPopper'></img>
-            <img src = {club} className = 'suitPopper'></img>
-            <img src = {diamond} className = 'suitPopper'></img>
-            <img src = {spade} className = 'suitPopper'></img>
+            <img src = {heart} id = 'heart' alt = 'heart suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {club} id = 'club' alt = 'club suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {diamond} id = 'diamond' alt = 'diamond suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {spade} id = 'spade' alt = 'spade suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
             <div className="popper__arrow"></div>
         </div>
     )
