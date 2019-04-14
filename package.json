@@ -5,6 +5,7 @@
   "dependencies": {
     "images": "^3.0.2",
     "merge-images": "^1.1.0",
+    "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.8",
     "react-dom": "^16.8.6",
