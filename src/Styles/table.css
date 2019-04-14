@@ -32,6 +32,8 @@
     box-shadow: 0 0 2px rgba(0,0,0,0.5);
     padding: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 .popper .popper__arrow{
     width: 0;
@@ -55,4 +57,9 @@ margin-bottom: 0;
 
 .popper[x-placement^="bottom"]{
     margin-top: 5px;
+}
+
+.suitPopper{
+  width: 30px;
+  height: auto;
 }

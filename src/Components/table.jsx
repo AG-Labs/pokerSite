@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import mergeImages from 'merge-images';
 import Popper from 'popper.js'
+import SuitPopper from './suit-popper.jsx'
 
 import cardBack from '../Images/cardBack.png';
 import cardFront from '../Images/card.png';
 import club from '../Images/club.png';
-import diamond from '../Images/club.png';
-import heart from '../Images/club.png';
-import spade from '../Images/club.png';
+import diamond from '../Images/diamond.png';
+import heart from '../Images/heart.png';
+import spade from '../Images/spade.png';
 
 import '../Styles/table.css'
 
@@ -59,9 +60,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop1'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <div id = 'popupflop1' className="popper" style = {{display: 'none'}}>popper
-                            <div class="popper__arrow"></div>
-                         </div>                
+                         <SuitPopper id = 'flop1'></SuitPopper>               
                 </div>
 
                 <div className='tableCards'>
@@ -70,9 +69,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop2'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <div id = 'popupflop2' className="popper" style = {{display: 'none'}}>popper
-                            <div class="popper__arrow"></div>
-                         </div>
+                         <SuitPopper id = 'flop2'></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -80,9 +77,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop3'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <div id = 'popupflop3' className="popper" style = {{display: 'none'}}>popper
-                            <div class="popper__arrow"></div>
-                         </div>
+                         <SuitPopper id = 'flop3'></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -90,9 +85,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'turn'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <div id = 'popupturn' className="popper" style = {{display: 'none'}}>popper
-                            <div class="popper__arrow"></div>
-                         </div>
+                         <SuitPopper id = 'turn'></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -100,9 +93,7 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'river'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <div id = 'popupriver' className="popper" style = {{display: 'none'}}>popper
-                            <div class="popper__arrow"></div>
-                         </div>
+                         <SuitPopper id = 'river'></SuitPopper>
                 </div>                
             </div>
  )

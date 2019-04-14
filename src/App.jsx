@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PokerTable from './Components/table.js';
-import MySection from './Components/mySection.js';
+import PokerTable from './Components/table.jsx';
+import MySection from './Components/mySection.jsx';
 import './App.css';
 
 
