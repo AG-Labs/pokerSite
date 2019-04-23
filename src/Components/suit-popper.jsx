@@ -13,7 +13,7 @@ const SuitPopper = props => {
             <img src = {club} id = 'club' alt = 'club suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
             <img src = {diamond} id = 'diamond' alt = 'diamond suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
             <img src = {spade} id = 'spade' alt = 'spade suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <div className="popper__arrow"></div>
+            <div className="popper__arrow" x-arrow = 'true'></div>
         </div>
     )
 
