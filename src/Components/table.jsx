@@ -23,10 +23,11 @@ const pokerTable = props => {
     const [selectedCard, setSelectedCard] = React.useState('')
 
     const tableClickHandler = (event) => {
+        console.log(event.target)
         setSelectedCard(event.target.id)
 
         let ref = document.querySelector('#' + event.target.id)
-        let popperRef = document.querySelector('#popup' + event.target.id)
+        let popperRef = document.querySelector('#popup')
         popperRef.style.display = 'block'
 
         let popper = new Popper(ref, popperRef, {
@@ -37,10 +38,8 @@ const pokerTable = props => {
     const suitHandler = (event) => {
         changePhoto(selectedCard, event.target.id)
 
-
-        let popperRef = document.querySelector('#popup' + selectedCard)
+        let popperRef = document.querySelector('#popup')
         popperRef.style.display = 'none'
-
     }
 
     const changePhoto = (photoID, setSuit) => {
@@ -57,22 +56,20 @@ const pokerTable = props => {
 
  return(
         <div className="Table">
+            <SuitPopper suitHandler = {suitHandler}></SuitPopper>
                 <div className='tableCards'>
                     <img src={cardBack} 
                          alt="emptyCard" 
                          className='tableCard'
                          id = 'flop1'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'flop1' suitHandler = {suitHandler}></SuitPopper>               
                 </div>
-
                 <div className='tableCards'>
                     <img src={cardBack} 
                          alt="emptyCard" 
                          className='tableCard'
                          id = 'flop2'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'flop2' suitHandler = {suitHandler}></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -80,7 +77,6 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'flop3'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'flop3' suitHandler = {suitHandler}></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -88,7 +84,6 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'turn'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'turn' suitHandler = {suitHandler}></SuitPopper>
                 </div>
                 <div className='tableCards'>
                     <img src={cardBack} 
@@ -96,7 +91,6 @@ const pokerTable = props => {
                          className='tableCard'
                          id = 'river'
                          onClick = {(e) => tableClickHandler(e)}></img>
-                         <SuitPopper id = 'river' suitHandler = {suitHandler}></SuitPopper>
                 </div>                
             </div>
  )
