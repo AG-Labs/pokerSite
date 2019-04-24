@@ -6,7 +6,6 @@ import heart from '../Images/heart.png';
 import spade from '../Images/spade.png';
 
 const SuitPopper = props => {
-    console.log(props)
     return(
         <div id = {'popup'} className="popper" style = {{display: 'none'}}>
             <img src = {heart} id = 'heart' alt = 'heart suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>

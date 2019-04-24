@@ -27,7 +27,7 @@
     position: absolute;
     background: white;
     color: black;
-    width: 150px;
+    width: auto;
     border-radius: 3px;
     box-shadow: 0 0 2px rgba(0,0,0,0.5);
     padding: 10px;
@@ -60,6 +60,6 @@ margin-bottom: 0;
 }
 
 .suitPopper{
-  width: 30px;
+  width: 40px;
   height: auto;
 }
