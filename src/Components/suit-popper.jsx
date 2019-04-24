@@ -8,10 +8,10 @@ import spade from '../Images/spade.png';
 const SuitPopper = props => {
     return(
         <div id = {'popup'} className="popper" style = {{display: 'none'}}>
-            <img src = {heart} id = 'heart' alt = 'heart suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <img src = {club} id = 'club' alt = 'club suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <img src = {diamond} id = 'diamond' alt = 'diamond suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <img src = {spade} id = 'spade' alt = 'spade suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {heart} id = 'popheart' alt = 'heart suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {club} id = 'popclub' alt = 'club suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {diamond} id = 'popdiamond' alt = 'diamond suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+            <img src = {spade} id = 'popspade' alt = 'spade suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
             <div className="popper__arrow" x-arrow = 'true'></div>
         </div>
     )

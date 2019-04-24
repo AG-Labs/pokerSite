@@ -1,7 +1,8 @@
 import React from 'react';
 import mergeImages from 'merge-images';
 import Popper from 'popper.js'
-import SuitPopper from './suit-popper.jsx'
+import SuitPopper from './suit-popper.jsx';
+import NumberPopper from './number-popper';
 
 import cardBack from '../Images/cardBack.png';
 import cardFront from '../Images/card.png';
@@ -23,7 +24,6 @@ const pokerTable = props => {
     const [selectedCard, setSelectedCard] = React.useState('')
 
     const tableClickHandler = (event) => {
-        console.log(event.target)
         setSelectedCard(event.target.id)
 
         let ref = document.querySelector('#' + event.target.id)
@@ -35,11 +35,21 @@ const pokerTable = props => {
         });
     }
 
-    const suitHandler = (event) => {
-        changePhoto(selectedCard, event.target.id)
+  
 
-        let popperRef = document.querySelector('#popup')
-        popperRef.style.display = 'none'
+    const suitHandler = (event) => {
+        changePhoto(selectedCard, event.target.id.substring(3))
+
+        let suitPopperRef = document.querySelector('#'+event.target.id)
+        let numPopperRef = document.querySelector('#numPopup')
+        numPopperRef.style.display = 'flex'
+
+        let popper = new Popper(suitPopperRef, numPopperRef, {
+            placement: 'bottom'
+        });
+    }
+    const numberHandler = (event) => {
+        console.log(event)
     }
 
     const changePhoto = (photoID, setSuit) => {
@@ -57,6 +67,7 @@ const pokerTable = props => {
  return(
         <div className="Table">
             <SuitPopper suitHandler = {suitHandler}></SuitPopper>
+            <NumberPopper suitHandler = {numberHandler}></NumberPopper>
                 <div className='tableCards'>
                     <img src={cardBack} 
                          alt="emptyCard" 
