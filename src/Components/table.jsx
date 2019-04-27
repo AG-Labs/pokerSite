@@ -54,6 +54,10 @@ const pokerTable = props => {
     const [selectedSuit, setSelectedSuit] = React.useState('')
 
     const tableClickHandler = (event) => {
+        if (event.target.id !== selectedCard){
+            let numPopperRef = document.querySelector('#numPopup')
+            numPopperRef.style.display = 'none'
+        }
         setSelectedCard(event.target.id)
 
         let ref = document.querySelector('#' + event.target.id)
