@@ -1,9 +1,9 @@
 import React from 'react'
 
-import club from '../Images/club.png';
-import diamond from '../Images/diamond.png';
-import heart from '../Images/heart.png';
-import spade from '../Images/spade.png';
+import club from '../Images/suits/club.png';
+import diamond from '../Images/suits/diamond.png';
+import heart from '../Images/suits/heart.png';
+import spade from '../Images/suits/spade.png';
 
 const SuitPopper = props => {
     return(

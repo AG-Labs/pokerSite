@@ -67,3 +67,12 @@ margin-bottom: 0;
   width: 40px;
   height: auto;
 }
+
+.numPopper{
+  margin: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.numPopper:hover{
+  cursor: pointer;
+}

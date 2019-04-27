@@ -1,26 +1,21 @@
 import React from 'react'
 
-import club from '../Images/club.png';
-import diamond from '../Images/diamond.png';
-import heart from '../Images/heart.png';
-import spade from '../Images/spade.png';
-
 const NumberPopper = props => {
     return(
         <div id = {'numPopup'} className="popper numberPopper" style = {{display: 'none'}}>
-            <p id = '1' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >1</p>
-            <p id = '2' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >2</p>
-            <p id = '3' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >3</p>
-            <p id = '4' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >4</p>
-            <p id = '5' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >5</p>
-            <p id = '6' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >6</p>
-            <p id = '7' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >7</p>
-            <p id = '8' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >8</p>
-            <p id = '9' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >9</p>
-            <p id = '10' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >10</p>
-            <p id = '11' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >J</p>
-            <p id = '12' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >Q</p>
-            <p id = '13' className ='numPopper' onClick ={(e)=>props.suitHandler(e)} >K</p>
+            <p id = 'one' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >1</p>
+            <p id = 'two' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >2</p>
+            <p id = 'three' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >3</p>
+            <p id = 'four' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >4</p>
+            <p id = 'five' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >5</p>
+            <p id = 'six' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >6</p>
+            <p id = 'seven' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >7</p>
+            <p id = 'eight' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >8</p>
+            <p id = 'nine' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >9</p>
+            <p id = 'ten' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >10</p>
+            <p id = 'jack' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >J</p>
+            <p id = 'queen' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >Q</p>
+            <p id = 'king' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >K</p>
 
             <div className="popper__arrow" x-arrow = 'true'></div>
         </div>
