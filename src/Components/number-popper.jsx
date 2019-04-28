@@ -2,7 +2,7 @@ import React from 'react'
 
 const NumberPopper = props => {
     return(
-        <div id = {'numPopup'} className="popper numberPopper" style = {{display: 'none'}}>
+        <div id = {'numPopup' + props.idAddition} className="popper numberPopper" style = {{display: 'none'}}>
             <p id = 'one' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >1</p>
             <p id = 'two' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >2</p>
             <p id = 'three' className ='numPopper' onClick ={(e)=>props.numHandler(e)} >3</p>

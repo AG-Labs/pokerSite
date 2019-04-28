@@ -7,11 +7,11 @@ import spade from '../Images/suits/spade.png';
 
 const SuitPopper = props => {
     return(
-        <div id = {'popup'} className="popper" style = {{display: 'none'}}>
-            <img src = {heart} id = 'popheart' alt = 'heart suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <img src = {club} id = 'popclub' alt = 'club suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <img src = {diamond} id = 'popdiamond' alt = 'diamond suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
-            <img src = {spade} id = 'popspade' alt = 'spade suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e)}></img>
+        <div id = {'popup'+ props.idAddition} className="popper" style = {{display: 'none'}}>
+            <img src = {heart} id = {'popheart'+ props.idAddition}  alt = 'heart suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e,'heart')}></img>
+            <img src = {club} id = {'popclub'+ props.idAddition} alt = 'club suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e,'club')}></img>
+            <img src = {diamond} id = {'popdiamond'+ props.idAddition} alt = 'diamond suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e,'diamond')}></img>
+            <img src = {spade} id = {'popspade'+ props.idAddition} alt = 'spade suit' className = 'suitPopper' onClick = {(e)=>props.suitHandler(e, 'spade')}></img>
             <div className="popper__arrow" x-arrow = 'true'></div>
         </div>
     )

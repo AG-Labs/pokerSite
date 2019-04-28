@@ -7,7 +7,6 @@ import NumberPopper from './number-popper';
 import cardBack from '../Images/cardBack.png';
 import cardFront from '../Images/card.png';
 
-
 import '../Styles/table.css'
 
 const pokerTable = props => {
@@ -17,13 +16,13 @@ const pokerTable = props => {
 
     const tableClickHandler = (event) => {
         if (event.target.id !== selectedCard){
-            let numPopperRef = document.querySelector('#numPopup')
+            let numPopperRef = document.querySelector('#numPopuptable')
             numPopperRef.style.display = 'none'
         }
         setSelectedCard(event.target.id)
 
         let ref = document.querySelector('#' + event.target.id)
-        let popperRef = document.querySelector('#popup')
+        let popperRef = document.querySelector('#popuptable')
         popperRef.style.display = 'block'
 
         let popper = new Popper(ref, popperRef, {
@@ -31,11 +30,12 @@ const pokerTable = props => {
         });
     }
 
-    const suitHandler = (event) => {
-        setSelectedSuit(event.target.id.substring(3))
+    const suitHandler = (event,suit) => {
+        console.log('suit handler table')
 
+        setSelectedSuit(suit)
         let suitPopperRef = document.querySelector('#'+event.target.id)
-        let numPopperRef = document.querySelector('#numPopup')
+        let numPopperRef = document.querySelector('#numPopuptable')
         numPopperRef.style.display = 'flex'
 
         let popper = new Popper(suitPopperRef, numPopperRef, {
@@ -44,10 +44,11 @@ const pokerTable = props => {
     }
 
     const numHandler = (event) => {
+        console.log('number handler table')
         changePhoto(selectedCard, selectedSuit,event.target.id )
 
-        let popperRef = document.querySelector('#popup')
-        let numPopperRef = document.querySelector('#numPopup')
+        let popperRef = document.querySelector('#popuptable')
+        let numPopperRef = document.querySelector('#numPopuptable')
 
         popperRef.style.display = 'none'
         numPopperRef.style.display = 'none'
@@ -69,8 +70,8 @@ const pokerTable = props => {
 
  return(
         <div className="Table">
-            <SuitPopper suitHandler = {suitHandler}></SuitPopper>
-            <NumberPopper numHandler = {numHandler}></NumberPopper>
+            <SuitPopper suitHandler = {suitHandler} idAddition = 'table'></SuitPopper>
+            <NumberPopper numHandler = {numHandler} idAddition = 'table'></NumberPopper>
                 <div className='tableCards'>
                     <img src={cardBack} 
                          alt="emptyCard" 

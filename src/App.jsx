@@ -55,7 +55,7 @@ class App extends Component {
       <div className="App">
       <PokerTable suits = {this.suits2} numbers={this.numbers2}/>
         <div className="bottom">
-          <MySection/>
+          <MySection suits = {this.suits2} numbers={this.numbers2}/>
 
           <div className="right">
             prediction area
