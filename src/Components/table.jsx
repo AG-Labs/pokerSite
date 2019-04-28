@@ -3,6 +3,7 @@ import mergeImages from 'merge-images';
 import Popper from 'popper.js'
 import SuitPopper from './suit-popper.jsx';
 import NumberPopper from './number-popper';
+import Card from './card'
 
 import cardBack from '../Images/cardBack.png';
 import cardFront from '../Images/card.png';
@@ -15,6 +16,7 @@ const pokerTable = props => {
     const [selectedSuit, setSelectedSuit] = React.useState('')
 
     const tableClickHandler = (event) => {
+        console.log(event.target.id)
         if (event.target.id !== selectedCard){
             let numPopperRef = document.querySelector('#numPopuptable')
             numPopperRef.style.display = 'none'
@@ -72,42 +74,12 @@ const pokerTable = props => {
         <div className="Table">
             <SuitPopper suitHandler = {suitHandler} idAddition = 'table'></SuitPopper>
             <NumberPopper numHandler = {numHandler} idAddition = 'table'></NumberPopper>
-                <div className='tableCards'>
-                    <img src={cardBack} 
-                         alt="emptyCard" 
-                         className='tableCard'
-                         id = 'flop1'
-                         onClick = {(e) => tableClickHandler(e)}></img>
-                </div>
-                <div className='tableCards'>
-                    <img src={cardBack} 
-                         alt="emptyCard" 
-                         className='tableCard'
-                         id = 'flop2'
-                         onClick = {(e) => tableClickHandler(e)}></img>
-                </div>
-                <div className='tableCards'>
-                    <img src={cardBack} 
-                         alt="emptyCard" 
-                         className='tableCard'
-                         id = 'flop3'
-                         onClick = {(e) => tableClickHandler(e)}></img>
-                </div>
-                <div className='tableCards'>
-                    <img src={cardBack} 
-                         alt="emptyCard" 
-                         className='tableCard'
-                         id = 'turn'
-                         onClick = {(e) => tableClickHandler(e)}></img>
-                </div>
-                <div className='tableCards'>
-                    <img src={cardBack} 
-                         alt="emptyCard" 
-                         className='tableCard'
-                         id = 'river'
-                         onClick = {(e) => tableClickHandler(e)}></img>
-                </div>                
-            </div>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop1' clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop2' clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop3' clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'turn' clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'river' clickHandler = {tableClickHandler}/>               
+        </div>
  )
 }
 

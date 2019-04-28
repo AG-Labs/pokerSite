@@ -3,6 +3,7 @@ import mergeImages from 'merge-images';
 import Popper from 'popper.js'
 import SuitPopper from './suit-popper.jsx';
 import NumberPopper from './number-popper';
+import Card from './card'
 
 import cardBack from '../Images/cardBack.png';
 import cardFront from '../Images/card.png';
@@ -69,31 +70,16 @@ const mySection = props => {
     return(
     <>
     <div className="left">
-    <div className="meter">
-        <div className="power">60%</div>
-    </div>
+        <div className="meter">
+            <div className="power">60%</div>
+        </div>
 
-    <div className="myHand">
-    <SuitPopper suitHandler = {suitHandler} idAddition = 'hand'></SuitPopper>
-    <NumberPopper numHandler = {numHandler} idAddition = 'hand'></NumberPopper>
-    <div className="myCardHolder">
-        <img    src={cardBack} 
-                alt = "empty card" 
-                className="myCard" 
-                id = 'handOne' 
-                onClick = {(e) => myHandClickHandler(e)}>
-        </img>
-    </div>
-    <div className="myCardHolder">
-        <img    src={cardBack} 
-                alt = "empty card" 
-                className="myCard"
-                id = 'handTwo' 
-                onClick = {(e) => myHandClickHandler(e)}>
-        </img>
-    </div>
-    </div>
-
+        <div className="myHand">
+            <SuitPopper suitHandler = {suitHandler} idAddition = 'hand'></SuitPopper>
+            <NumberPopper numHandler = {numHandler} idAddition = 'hand'></NumberPopper>
+            <Card styleGroup = 'myCardHolder' group = 'myCard' id = 'handOne' clickHandler = {myHandClickHandler}/>
+            <Card styleGroup = 'myCardHolder' group = 'myCard' id = 'handTwo' clickHandler = {myHandClickHandler}/>
+        </div>
     </div>
     </>
     )
