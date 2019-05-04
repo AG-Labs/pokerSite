@@ -1,19 +1,16 @@
 import React from 'react';
-import mergeImages from 'merge-images';
 import Popper from 'popper.js'
 import SuitPopper from './suit-popper.jsx';
 import NumberPopper from './number-popper';
 import Card from './card'
-
-import cardBack from '../Images/cardBack.png';
-import cardFront from '../Images/card.png';
 
 import '../Styles/table.css'
 
 const pokerTable = props => {
 
     const [selectedCard, setSelectedCard] = React.useState('')
-    const [selectedSuit, setSelectedSuit] = React.useState('')
+    const [suits, setSuits] = React.useState({flop1:'',flop2:'', flop3:'',turn:'',river:''})
+    const [values, setvaule] = React.useState({flop1:'',flop2:'', flop3:'',turn:'',river:''})
 
     const tableClickHandler = (event) => {
         console.log(event.target.id)
@@ -35,7 +32,10 @@ const pokerTable = props => {
     const suitHandler = (event,suit) => {
         console.log('suit handler table')
 
-        setSelectedSuit(suit)
+        setSuits(prevState => {
+            return { ...prevState, [selectedCard]: suit }
+          });
+
         let suitPopperRef = document.querySelector('#'+event.target.id)
         let numPopperRef = document.querySelector('#numPopuptable')
         numPopperRef.style.display = 'flex'
@@ -47,7 +47,10 @@ const pokerTable = props => {
 
     const numHandler = (event) => {
         console.log('number handler table')
-        changePhoto(selectedCard, selectedSuit,event.target.id )
+        let temp = event.target.id
+        setvaule(prevState => {
+            return { ...prevState, [selectedCard]: temp }
+          });
 
         let popperRef = document.querySelector('#popuptable')
         let numPopperRef = document.querySelector('#numPopuptable')
@@ -56,29 +59,15 @@ const pokerTable = props => {
         numPopperRef.style.display = 'none'
     }
 
-    const changePhoto = (photoID, setSuit, setNum) => {
-        
-        mergeImages([
-          {src: cardFront, x: 0, y: 0},
-          {src: props.suits[setSuit], x: 62, y: 100},
-          {src: props.numbers[setNum],x:25,y:20},
-          {src: props.numbers[setNum],x:195,y:280}
-        ])
-          .then(b64 => {
-            document.querySelector('#'+photoID).src = b64
-    
-          });
-    }
-
  return(
         <div className="Table">
             <SuitPopper suitHandler = {suitHandler} idAddition = 'table'></SuitPopper>
             <NumberPopper numHandler = {numHandler} idAddition = 'table'></NumberPopper>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop1' clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop2' clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop3' clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'turn' clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'river' clickHandler = {tableClickHandler}/>               
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop1' suit = {suits.flop1} value ={values.flop1} clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop2' suit = {suits.flop2} value ={values.flop2} clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop3' suit = {suits.flop3} value ={values.flop3} clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'turn' suit = {suits.turn} value ={values.turn} clickHandler = {tableClickHandler}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'river' suit = {suits.river} value ={values.river} clickHandler = {tableClickHandler}/>               
         </div>
  )
 }
