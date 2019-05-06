@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import mergeImages from 'merge-images';
+import '../Styles/card.css'
 
 import cardBack from '../Images/cardBack.png';
 import cardFront from '../Images/card.png';
@@ -26,8 +27,16 @@ class Card extends Component {
 
   constructor(props){
     super(props)
-    this.state = ({cardPic: cardBack})
+    this.props.startingVal 
+      ? this.state = ({cardPic: cardFront})
+      : this.state = ({cardPic: cardBack})
     this.changePhoto = this.changePhoto.bind(this)
+  }
+
+  componentWillMount(){
+    if(!this.props.fullSize){
+      this.changePhoto(this.props.initial.suit,this.props.initial.value)
+    }
   }
 
   componentDidUpdate(oldProps){
@@ -81,7 +90,7 @@ class Card extends Component {
         <div className={this.props.styleGroup}>
             <img    src={this.state.cardPic} 
                     alt = "empty card" 
-                    className={this.props.group} 
+                    className='aCard' 
                     id = {this.props.id}
                     onClick = {(e) => this.props.clickHandler(e)}>
             </img>

@@ -7,7 +7,6 @@ import Card from './card'
 import '../Styles/table.css'
 
 const pokerTable = props => {
-
     const [selectedCard, setSelectedCard] = React.useState('')
     const [suits, setSuits] = React.useState({flop1:'',flop2:'', flop3:'',turn:'',river:''})
     const [values, setvaule] = React.useState({flop1:'',flop2:'', flop3:'',turn:'',river:''})
@@ -63,11 +62,11 @@ const pokerTable = props => {
         <div className="Table">
             <SuitPopper suitHandler = {suitHandler} idAddition = 'table'></SuitPopper>
             <NumberPopper numHandler = {numHandler} idAddition = 'table'></NumberPopper>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop1' suit = {suits.flop1} value ={values.flop1} clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop2' suit = {suits.flop2} value ={values.flop2} clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop3' suit = {suits.flop3} value ={values.flop3} clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'turn' suit = {suits.turn} value ={values.turn} clickHandler = {tableClickHandler}/>
-            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'river' suit = {suits.river} value ={values.river} clickHandler = {tableClickHandler}/>               
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop1' suit = {suits.flop1} value ={values.flop1} clickHandler = {tableClickHandler} fullSize = {true}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop2' suit = {suits.flop2} value ={values.flop2} clickHandler = {tableClickHandler} fullSize = {true}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'flop3' suit = {suits.flop3} value ={values.flop3} clickHandler = {tableClickHandler} fullSize = {true}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'turn' suit = {suits.turn} value ={values.turn} clickHandler = {tableClickHandler} fullSize = {true}/>
+            <Card styleGroup = 'tableCards' group = 'tableCard' id = 'river' suit = {suits.river} value ={values.river} clickHandler = {tableClickHandler} fullSize = {true}/>               
         </div>
  )
 }

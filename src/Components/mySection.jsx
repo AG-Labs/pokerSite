@@ -66,8 +66,8 @@ const mySection = props => {
         <div className="myHand">
             <SuitPopper suitHandler = {suitHandler} idAddition = 'hand'></SuitPopper>
             <NumberPopper numHandler = {numHandler} idAddition = 'hand'></NumberPopper>
-            <Card styleGroup = 'myCardHolder' group = 'myCard' id = 'handOne' suit = {suits.handOne} value ={values.handOne} clickHandler = {myHandClickHandler}/>
-            <Card styleGroup = 'myCardHolder' group = 'myCard' id = 'handTwo' suit = {suits.handTwo} value ={values.handTwo} clickHandler = {myHandClickHandler}/>
+            <Card styleGroup = 'myCardHolder' group = 'myCard' id = 'handOne' suit = {suits.handOne} value ={values.handOne} clickHandler = {myHandClickHandler} fullSize = {true}/>
+            <Card styleGroup = 'myCardHolder' group = 'myCard' id = 'handTwo' suit = {suits.handTwo} value ={values.handTwo} clickHandler = {myHandClickHandler} fullSize = {true}/>
         </div>
     </div>
     </>
