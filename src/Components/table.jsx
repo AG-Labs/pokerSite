@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Popper from "popper.js";
 import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
@@ -6,16 +6,16 @@ import Card from "./card";
 
 import "../Styles/table.css";
 
-const pokerTable = props => {
-  const [selectedCard, setSelectedCard] = React.useState("");
-  const [suits, setSuits] = React.useState({
+const PokerTable = props => {
+  let [selectedCard, setSelectedCard] = useState("");
+  let [suits, setSuits] = useState({
     flop1: "",
     flop2: "",
     flop3: "",
     turn: "",
     river: ""
   });
-  const [values, setvaule] = React.useState({
+  let [values, setvaule] = useState({
     flop1: "",
     flop2: "",
     flop3: "",
@@ -75,6 +75,7 @@ const pokerTable = props => {
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card
+        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="flop1"
@@ -84,6 +85,7 @@ const pokerTable = props => {
         fullSize={true}
       />
       <Card
+        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="flop2"
@@ -93,6 +95,7 @@ const pokerTable = props => {
         fullSize={true}
       />
       <Card
+        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="flop3"
@@ -102,6 +105,7 @@ const pokerTable = props => {
         fullSize={true}
       />
       <Card
+        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="turn"
@@ -111,6 +115,7 @@ const pokerTable = props => {
         fullSize={true}
       />
       <Card
+        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="river"
@@ -123,4 +128,4 @@ const pokerTable = props => {
   );
 };
 
-export default pokerTable;
+export default PokerTable;

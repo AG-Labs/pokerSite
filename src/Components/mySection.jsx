@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Popper from "popper.js";
 import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
@@ -6,11 +6,11 @@ import Card from "./card";
 
 import "../Styles/mySection.css";
 
-const mySection = props => {
-  const [selectedCard, setSelectedCard] = React.useState("");
+const MySection = props => {
+  let [selectedCard, setSelectedCard] = useState("");
 
-  const [suits, setSuits] = React.useState({ handOne: "", handTwo: "" });
-  const [values, setvaule] = React.useState({ handOne: "", handTwo: "" });
+  let [suits, setSuits] = useState({ handOne: "", handTwo: "" });
+  let [values, setvaule] = useState({ handOne: "", handTwo: "" });
 
   const myHandClickHandler = event => {
     if (event.target.id !== selectedCard) {
@@ -66,6 +66,7 @@ const mySection = props => {
           <SuitPopper suitHandler={suitHandler} idAddition="hand" />
           <NumberPopper numHandler={numHandler} idAddition="hand" />
           <Card
+            alterCardStore={props.alterCardStore}
             styleGroup="myCardHolder"
             group="myCard"
             id="handOne"
@@ -75,6 +76,7 @@ const mySection = props => {
             fullSize={true}
           />
           <Card
+            alterCardStore={props.alterCardStore}
             styleGroup="myCardHolder"
             group="myCard"
             id="handTwo"
@@ -88,4 +90,4 @@ const mySection = props => {
     </>
   );
 };
-export default mySection;
+export default MySection;
