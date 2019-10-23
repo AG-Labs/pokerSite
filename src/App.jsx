@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ContextProvider from "./cardStore";
 import PokerTable from "./Components/table.jsx";
 import MySection from "./Components/mySection.jsx";
 import PredictionArea from "./Components/prediction-area.jsx";
@@ -42,16 +43,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <PokerTable alterCardStore={this.alterCardStore} />
-        <div className="bottom">
-          <MySection alterCardStore={this.alterCardStore} />
+      <ContextProvider>
+        <div className="App">
+          <PokerTable alterCardStore={this.alterCardStore} />
+          <div className="bottom">
+            <MySection alterCardStore={this.alterCardStore} />
 
-          <div className="right" style={{ overflow: "auto" }}>
-            <PredictionArea />
+            <div className="right" style={{ overflow: "auto" }}>
+              <PredictionArea />
+            </div>
           </div>
         </div>
-      </div>
+      </ContextProvider>
     );
   }
 }
