@@ -9,22 +9,7 @@ import "../Styles/table.css";
 
 const PokerTable = props => {
   const context = useContext(CardContext);
-  console.log(context);
   let [selectedCard, setSelectedCard] = useState("");
-  let [suits, setSuits] = useState({
-    flop1: "",
-    flop2: "",
-    flop3: "",
-    turn: "",
-    river: ""
-  });
-  let [values, setvaule] = useState({
-    flop1: "",
-    flop2: "",
-    flop3: "",
-    turn: "",
-    river: ""
-  });
 
   const tableClickHandler = event => {
     console.log(event.target.id);
@@ -44,11 +29,7 @@ const PokerTable = props => {
   };
 
   const suitHandler = (event, suit) => {
-    console.log("suit handler table");
-
-    setSuits(prevState => {
-      return { ...prevState, [selectedCard]: suit };
-    });
+    context.setSuit(selectedCard, suit);
 
     let suitPopperRef = document.querySelector("#" + event.target.id);
     let numPopperRef = document.querySelector("#numPopuptable");
@@ -62,9 +43,7 @@ const PokerTable = props => {
   const numHandler = event => {
     console.log("number handler table");
     let temp = event.target.id;
-    setvaule(prevState => {
-      return { ...prevState, [selectedCard]: temp };
-    });
+    context.setValue(selectedCard, temp);
 
     let popperRef = document.querySelector("#popuptable");
     let numPopperRef = document.querySelector("#numPopuptable");
@@ -82,8 +61,8 @@ const PokerTable = props => {
         styleGroup="tableCards"
         group="tableCard"
         id="flop1"
-        suit={suits.flop1}
-        value={values.flop1}
+        suit={context.state.cardStore.flop1.suit}
+        value={context.state.cardStore.flop1.value}
         clickHandler={tableClickHandler}
         fullSize={true}
       />
@@ -92,8 +71,8 @@ const PokerTable = props => {
         styleGroup="tableCards"
         group="tableCard"
         id="flop2"
-        suit={suits.flop2}
-        value={values.flop2}
+        suit={context.state.cardStore.flop2.suit}
+        value={context.state.cardStore.flop2.value}
         clickHandler={tableClickHandler}
         fullSize={true}
       />
@@ -102,8 +81,8 @@ const PokerTable = props => {
         styleGroup="tableCards"
         group="tableCard"
         id="flop3"
-        suit={suits.flop3}
-        value={values.flop3}
+        suit={context.state.cardStore.flop3.suit}
+        value={context.state.cardStore.flop3.value}
         clickHandler={tableClickHandler}
         fullSize={true}
       />
@@ -112,8 +91,8 @@ const PokerTable = props => {
         styleGroup="tableCards"
         group="tableCard"
         id="turn"
-        suit={suits.turn}
-        value={values.turn}
+        suit={context.state.cardStore.turn.suit}
+        value={context.state.cardStore.turn.value}
         clickHandler={tableClickHandler}
         fullSize={true}
       />
@@ -122,8 +101,8 @@ const PokerTable = props => {
         styleGroup="tableCards"
         group="tableCard"
         id="river"
-        suit={suits.river}
-        value={values.river}
+        suit={context.state.cardStore.river.suit}
+        value={context.state.cardStore.river.value}
         clickHandler={tableClickHandler}
         fullSize={true}
       />

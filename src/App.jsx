@@ -12,43 +12,14 @@ let suits = {
   spade: 3
 };
 
-let cardDesc = {
-  value: null,
-  suit: null
-};
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      cardStore: {
-        handOne: cardDesc,
-        handTwo: cardDesc,
-        flopOne: cardDesc,
-        flopTwo: cardDesc,
-        flopThree: cardDesc,
-        turn: cardDesc,
-        river: cardDesc
-      }
-    };
-    this.alterCardStore = this.alterCardStore.bind(this);
-  }
-
-  alterCardStore(cardType, card) {
-    console.log("alter card store", cardType, card);
-  }
-
-  handValue = () => {};
-
   render() {
     return (
       <ContextProvider>
         <div className="App">
-          <PokerTable alterCardStore={this.alterCardStore} />
+          <PokerTable />
           <div className="bottom">
-            <MySection alterCardStore={this.alterCardStore} />
-
+            <MySection />
             <div className="right" style={{ overflow: "auto" }}>
               <PredictionArea />
             </div>
