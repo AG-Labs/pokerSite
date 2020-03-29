@@ -67,7 +67,7 @@ class Card extends Component {
   };
 
   checkTypes() {
-    if (this.props.suit != false && this.props.value != false) {
+    if (this.props.suit !== "" && this.props.value !== "") {
       this.changePhoto(this.props.suit, this.props.value);
     }
   }
