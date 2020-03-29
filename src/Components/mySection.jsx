@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Popper from "popper.js";
 import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
 import Card from "./card";
+import { CardContext } from "../cardStore.js";
 
 import "../Styles/mySection.css";
 
 const MySection = props => {
+  const context = useContext(CardContext);
   let [selectedCard, setSelectedCard] = useState("");
-
-  let [suits, setSuits] = useState({ handOne: "", handTwo: "" });
-  let [values, setvaule] = useState({ handOne: "", handTwo: "" });
 
   const myHandClickHandler = event => {
     if (event.target.id !== selectedCard) {
@@ -28,9 +27,7 @@ const MySection = props => {
   };
   const suitHandler = (event, suit) => {
     console.log("suit handler hand");
-    setSuits(prevState => {
-      return { ...prevState, [selectedCard]: suit };
-    });
+    context.setSuit(selectedCard, suit);
 
     let suitPopperRef = document.querySelector("#" + event.target.id);
     let numPopperRef = document.querySelector("#numPopuphand");
@@ -44,9 +41,8 @@ const MySection = props => {
   const numHandler = event => {
     console.log("number handler hand");
     let temp = event.target.id;
-    setvaule(prevState => {
-      return { ...prevState, [selectedCard]: temp };
-    });
+
+    context.setValue(selectedCard, temp);
 
     let popperRef = document.querySelector("#popuphand");
     let numPopperRef = document.querySelector("#numPopuphand");
@@ -70,8 +66,8 @@ const MySection = props => {
             styleGroup="myCardHolder"
             group="myCard"
             id="handOne"
-            suit={suits.handOne}
-            value={values.handOne}
+            suit={context.state.cardStore.handOne.suit}
+            value={context.state.cardStore.handOne.value}
             clickHandler={myHandClickHandler}
             fullSize={true}
           />
@@ -80,8 +76,8 @@ const MySection = props => {
             styleGroup="myCardHolder"
             group="myCard"
             id="handTwo"
-            suit={suits.handTwo}
-            value={values.handTwo}
+            suit={context.state.cardStore.handTwo.suit}
+            value={context.state.cardStore.handTwo.value}
             clickHandler={myHandClickHandler}
             fullSize={true}
           />
