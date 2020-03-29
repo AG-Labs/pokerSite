@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Popper from "popper.js";
 import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
 import Card from "./card";
+import { CardContext } from "../cardStore.js";
 
 import "../Styles/table.css";
 
 const PokerTable = props => {
+  const context = useContext(CardContext);
+  console.log(context);
   let [selectedCard, setSelectedCard] = useState("");
   let [suits, setSuits] = useState({
     flop1: "",

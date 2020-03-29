@@ -4,7 +4,8 @@ export const CardContext = React.createContext();
 
 class ContextProvider extends Component {
   state = {
-    somestate: true
+    somestate: true,
+    anotherState: "hello"
   };
 
   render() {
@@ -24,4 +25,3 @@ class ContextProvider extends Component {
 }
 
 export default ContextProvider;
-//export const CardConsumer = FamilyContext.Consumer;
