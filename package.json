@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.1.1",
     "images": "^3.0.2",
     "merge-images": "^2.0.0",
-    "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.8",
     "react-dom": "^16.8.6",
