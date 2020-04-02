@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Axios from "axios";
 
 export const CardContext = React.createContext();
 
@@ -20,6 +21,18 @@ class ContextProvider extends Component {
     }
   };
 
+  getLambda = () => {
+    Axios.post("/.netlify/functions/hand-strength", {
+      cards: this.state.cardStore
+    })
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <CardContext.Provider
@@ -37,7 +50,6 @@ class ContextProvider extends Component {
               };
             });
           },
-
           setValue: (selectedCard, value) => {
             this.setState(prevState => {
               let newCard = Object.assign(
@@ -49,7 +61,8 @@ class ContextProvider extends Component {
                 cardStore: { ...prevState.cardStore, [selectedCard]: newCard }
               };
             });
-          }
+          },
+          getLambda: this.getLambda
         }}
       >
         {this.props.children}

@@ -2,8 +2,10 @@
   "name": "poker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost/9000/",
   "dependencies": {
     "@popperjs/core": "^2.1.1",
+    "axios": "^0.19.2",
     "images": "^3.0.2",
     "merge-images": "^2.0.0",
     "react": "^16.8.6",
@@ -15,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:lambda": "netlify-lambda serve /netlify-lambda",
+    "build:lambda": "netlify-lambda build /netlify-lambda"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -25,5 +29,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.3",
+    "netlify-lambda": "^1.6.3"
+  }
 }

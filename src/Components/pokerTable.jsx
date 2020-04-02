@@ -70,6 +70,8 @@ const PokerTable = props => {
 
   return (
     <div className="Table">
+      <button onClick={context.getLambda}>check function</button>
+
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card
