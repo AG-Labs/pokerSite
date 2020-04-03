@@ -18,7 +18,9 @@ class ContextProvider extends Component {
       turn: cardDesc,
       river: cardDesc
     },
-    allowTable: false
+    allowTable: false,
+    allowTurn: false,
+    allowRiver: false
   };
 
   render() {
@@ -53,6 +55,12 @@ class ContextProvider extends Component {
           },
           setTable: input => {
             this.setState({ allowTable: input });
+          },
+          setTurn: input => {
+            this.setState({ allowTurn: input });
+          },
+          setRiver: input => {
+            this.setState({ allowRiver: input });
           }
         }}
       >
