@@ -12,28 +12,30 @@ const PokerTable = props => {
   let [selectedCard, setSelectedCard] = useState("");
 
   const tableClickHandler = event => {
-    console.log(event.target.id);
-    if (event.target.id !== selectedCard) {
-      let numPopperRef = document.querySelector("#numPopuptable");
-      numPopperRef.style.display = "none";
-    }
-    setSelectedCard(event.target.id);
+    if (context.state.allowTable) {
+      console.log(event.target.id);
+      if (event.target.id !== selectedCard) {
+        let numPopperRef = document.querySelector("#numPopuptable");
+        numPopperRef.style.display = "none";
+      }
+      setSelectedCard(event.target.id);
 
-    let ref = document.querySelector("#" + event.target.id);
-    let popperRef = document.querySelector("#popuptable");
-    popperRef.style.display = "block";
+      let ref = document.querySelector("#" + event.target.id);
+      let popperRef = document.querySelector("#popuptable");
+      popperRef.style.display = "block";
 
-    const popper = createPopper(ref, popperRef, {
-      placement: "bottom",
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset: [0, 6]
+      const popper = createPopper(ref, popperRef, {
+        placement: "bottom",
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 6]
+            }
           }
-        }
-      ]
-    });
+        ]
+      });
+    }
   };
 
   const suitHandler = (event, suit) => {
