@@ -47,7 +47,7 @@ const NumberPopper = props => {
         K
       </p>
 
-      <div className="popper__arrow" x-arrow="true" />
+      <div className="arrow" data-popper-arrow></div>
     </div>
   );
 };

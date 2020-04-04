@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import Popper from "popper.js";
+import { createPopper } from "@popperjs/core";
 import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
 import Card from "./card";
@@ -21,8 +21,16 @@ const MySection = props => {
     let popperRef = document.querySelector("#popuphand");
     popperRef.style.display = "block";
 
-    let popper = new Popper(ref, popperRef, {
-      placement: "top"
+    const popper = createPopper(ref, popperRef, {
+      placement: "top",
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [0, 6]
+          }
+        }
+      ]
     });
   };
   const suitHandler = (event, suit) => {
@@ -33,8 +41,16 @@ const MySection = props => {
     let numPopperRef = document.querySelector("#numPopuphand");
     numPopperRef.style.display = "flex";
 
-    let popper = new Popper(suitPopperRef, numPopperRef, {
-      placement: "top"
+    const popper = createPopper(suitPopperRef, numPopperRef, {
+      placement: "top",
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [0, 16]
+          }
+        }
+      ]
     });
   };
 

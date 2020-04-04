@@ -40,7 +40,7 @@ const SuitPopper = props => {
         className="suitPopper"
         onClick={e => props.suitHandler(e, "spade")}
       />
-      <div className="popper__arrow" x-arrow="true" />
+      <div className="arrow" data-popper-arrow></div>
     </div>
   );
 };

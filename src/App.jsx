@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ContextProvider from "./cardStore";
-import PokerTable from "./Components/table.jsx";
+import PokerTable from "./Components/pokerTable.jsx";
 import MySection from "./Components/mySection.jsx";
 import PredictionArea from "./Components/prediction-area.jsx";
 import "./App.css";
