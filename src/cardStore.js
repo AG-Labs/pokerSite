@@ -18,7 +18,10 @@ class ContextProvider extends Component {
       flop3: cardDesc,
       turn: cardDesc,
       river: cardDesc
-    }
+    },
+    allowTable: false,
+    allowTurn: false,
+    allowRiver: false
   };
 
   getLambda = () => {
@@ -62,7 +65,16 @@ class ContextProvider extends Component {
               };
             });
           },
-          getLambda: this.getLambda
+          getLambda: this.getLambda,
+          setTable: input => {
+            this.setState({ allowTable: input });
+          },
+          setTurn: input => {
+            this.setState({ allowTurn: input });
+          },
+          setRiver: input => {
+            this.setState({ allowRiver: input });
+          }
         }}
       >
         {this.props.children}
