@@ -67,13 +67,13 @@ class ContextProvider extends Component {
           },
           getLambda: this.getLambda,
           setTable: input => {
-            this.setState({ allowTable: input });
+            this.setState({ allowTable: input }, this.getLambda);
           },
           setTurn: input => {
-            this.setState({ allowTurn: input });
+            this.setState({ allowTurn: input }, this.getLambda);
           },
           setRiver: input => {
-            this.setState({ allowRiver: input });
+            this.setState({ allowRiver: input }, this.getLambda);
           }
         }}
       >

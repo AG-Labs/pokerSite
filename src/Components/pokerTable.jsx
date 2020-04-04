@@ -104,7 +104,7 @@ const PokerTable = props => {
         console.error("shouldnt have been able to get here");
         break;
     }
-    if (tempCards.slice(0, 3).every(Boolean)) {
+    if (tempCards.slice(0, 3).every(Boolean) && !context.state.allowTurn) {
       context.setTurn(true);
     }
     if (tempCards.slice(0, 4).every(Boolean)) {
@@ -114,8 +114,6 @@ const PokerTable = props => {
 
   return (
     <div className="Table">
-      <button onClick={context.getLambda}>check function</button>
-
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card
