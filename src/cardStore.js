@@ -17,7 +17,10 @@ class ContextProvider extends Component {
       flop3: cardDesc,
       turn: cardDesc,
       river: cardDesc
-    }
+    },
+    allowTable: false,
+    allowTurn: false,
+    allowRiver: false
   };
 
   render() {
@@ -49,6 +52,15 @@ class ContextProvider extends Component {
                 cardStore: { ...prevState.cardStore, [selectedCard]: newCard }
               };
             });
+          },
+          setTable: input => {
+            this.setState({ allowTable: input });
+          },
+          setTurn: input => {
+            this.setState({ allowTurn: input });
+          },
+          setRiver: input => {
+            this.setState({ allowRiver: input });
           }
         }}
       >
