@@ -26,16 +26,8 @@ import king from "../Images/numbers/King.png";
 class Card extends Component {
   constructor(props) {
     super(props);
-    this.props.startingVal
-      ? (this.state = { cardPic: cardFront })
-      : (this.state = { cardPic: cardBack });
+    this.state = { cardPic: cardBack };
     this.changePhoto = this.changePhoto.bind(this);
-  }
-
-  componentWillMount() {
-    if (!this.props.fullSize) {
-      this.changePhoto(this.props.initial.suit, this.props.initial.value);
-    }
   }
 
   componentDidUpdate(oldProps) {
@@ -73,14 +65,16 @@ class Card extends Component {
   }
 
   changePhoto = (setSuit, setNum) => {
-    mergeImages([
-      { src: cardFront, x: 0, y: 0 },
-      { src: this.suits[setSuit], x: 62, y: 100 },
-      { src: this.numbers[setNum], x: 25, y: 20 },
-      { src: this.numbers[setNum], x: 195, y: 280 }
-    ]).then(b64 => {
-      this.setState({ cardPic: b64 });
-    });
+    if (setSuit !== null && setNum !== null) {
+      mergeImages([
+        { src: cardFront, x: 0, y: 0 },
+        { src: this.suits[setSuit], x: 62, y: 100 },
+        { src: this.numbers[setNum], x: 25, y: 20 },
+        { src: this.numbers[setNum], x: 195, y: 280 }
+      ]).then(b64 => {
+        this.setState({ cardPic: b64 });
+      });
+    }
   };
 
   render() {

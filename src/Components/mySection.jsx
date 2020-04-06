@@ -95,24 +95,20 @@ const MySection = props => {
           <SuitPopper suitHandler={suitHandler} idAddition="hand" />
           <NumberPopper numHandler={numHandler} idAddition="hand" />
           <Card
-            alterCardStore={props.alterCardStore}
             styleGroup="myCardHolder"
             group="myCard"
             id="handOne"
             suit={context.state.cardStore.handOne.suit}
             value={context.state.cardStore.handOne.value}
             clickHandler={myHandClickHandler}
-            fullSize={true}
           />
           <Card
-            alterCardStore={props.alterCardStore}
             styleGroup="myCardHolder"
             group="myCard"
             id="handTwo"
             suit={context.state.cardStore.handTwo.suit}
             value={context.state.cardStore.handTwo.value}
             clickHandler={myHandClickHandler}
-            fullSize={true}
           />
         </div>
       </div>

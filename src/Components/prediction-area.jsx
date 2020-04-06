@@ -9,15 +9,7 @@ class PredictionArea extends Component {
     return (
       <>
         <p className="predictionTitle">Prediction Area</p>
-        <div>
-          <Prediction />
-          <Prediction />
-          <Prediction />
-          <Prediction />
-          <Prediction />
-          <Prediction />
-          <Prediction />
-        </div>
+        <div>Not Yet implemented</div>
       </>
     );
   }

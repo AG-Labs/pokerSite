@@ -4,8 +4,8 @@ import Axios from "axios";
 export const CardContext = React.createContext();
 
 let cardDesc = {
-  value: "",
-  suit: ""
+  value: null,
+  suit: null
 };
 
 class ContextProvider extends Component {
