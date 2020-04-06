@@ -59,22 +59,20 @@ class Card extends Component {
   };
 
   checkTypes() {
-    if (this.props.suit !== "" && this.props.value !== "") {
+    if (this.props.suit !== undefined && this.props.value !== undefined) {
       this.changePhoto(this.props.suit, this.props.value);
     }
   }
 
   changePhoto = (setSuit, setNum) => {
-    if (setSuit !== null && setNum !== null) {
-      mergeImages([
-        { src: cardFront, x: 0, y: 0 },
-        { src: this.suits[setSuit], x: 62, y: 100 },
-        { src: this.numbers[setNum], x: 25, y: 20 },
-        { src: this.numbers[setNum], x: 195, y: 280 }
-      ]).then(b64 => {
-        this.setState({ cardPic: b64 });
-      });
-    }
+    mergeImages([
+      { src: cardFront, x: 0, y: 0 },
+      { src: this.suits[setSuit], x: 62, y: 100 },
+      { src: this.numbers[setNum], x: 25, y: 20 },
+      { src: this.numbers[setNum], x: 195, y: 280 }
+    ]).then(b64 => {
+      this.setState({ cardPic: b64 });
+    });
   };
 
   render() {
