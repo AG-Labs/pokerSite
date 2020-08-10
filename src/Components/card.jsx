@@ -40,7 +40,7 @@ class Card extends Component {
     club: club,
     diamond: diamond,
     heart: heart,
-    spade: spade
+    spade: spade,
   };
   numbers = {
     one: one,
@@ -55,12 +55,12 @@ class Card extends Component {
     ten: ten,
     jack: jack,
     queen: queen,
-    king: king
+    king: king,
   };
 
   checkTypes() {
-    if (this.props.suit !== undefined && this.props.value !== undefined) {
-      this.changePhoto(this.props.suit, this.props.value);
+    if (this.props.suit !== undefined && this.props.face !== undefined) {
+      this.changePhoto(this.props.suit, this.props.face);
     }
   }
 
@@ -69,8 +69,8 @@ class Card extends Component {
       { src: cardFront, x: 0, y: 0 },
       { src: this.suits[setSuit], x: 62, y: 100 },
       { src: this.numbers[setNum], x: 25, y: 20 },
-      { src: this.numbers[setNum], x: 195, y: 280 }
-    ]).then(b64 => {
+      { src: this.numbers[setNum], x: 195, y: 280 },
+    ]).then((b64) => {
       this.setState({ cardPic: b64 });
     });
   };
@@ -83,7 +83,7 @@ class Card extends Component {
           alt="empty card"
           className="aCard"
           id={this.props.id}
-          onClick={e => this.props.clickHandler(e)}
+          onClick={(e) => this.props.clickHandler(e)}
         />
       </div>
     );

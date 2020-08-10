@@ -3,11 +3,11 @@ import Card from "./card.jsx";
 import "../Styles/prediction-area.css";
 
 class Prediction extends Component {
-  predictionOne = { suit: "heart", value: "king" };
-  predictionTwo = { suit: "club", value: "queen" };
-  predictionThree = { suit: "spade", value: "jack" };
-  predictionFour = { suit: "diamond", value: "ten" };
-  predictionFive = { suit: "heart", value: "nine" };
+  predictionOne = { suit: "heart", face: "king" };
+  predictionTwo = { suit: "club", face: "queen" };
+  predictionThree = { suit: "spade", face: "jack" };
+  predictionFour = { suit: "diamond", face: "ten" };
+  predictionFive = { suit: "heart", face: "nine" };
 
   render() {
     return (

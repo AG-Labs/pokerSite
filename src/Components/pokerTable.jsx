@@ -67,7 +67,7 @@ const PokerTable = (props) => {
   const numHandler = (event) => {
     console.log("number handler table");
     let temp = event.target.id;
-    context.setValue(selectedCard, temp);
+    context.setFace(selectedCard, temp);
     setTableCard(selectedCard);
 
     let popperRef = document.querySelector("#popuptable");
@@ -114,6 +114,8 @@ const PokerTable = (props) => {
 
   return (
     <div className="Table">
+      {console.log(context)}
+
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card
@@ -121,7 +123,7 @@ const PokerTable = (props) => {
         group="tableCard"
         id="flop1"
         suit={context.state.cardStore.flop1.suit}
-        value={context.state.cardStore.flop1.value}
+        face={context.state.cardStore.flop1.face}
         clickHandler={tableClickHandler}
       />
       <Card
@@ -129,7 +131,7 @@ const PokerTable = (props) => {
         group="tableCard"
         id="flop2"
         suit={context.state.cardStore.flop2.suit}
-        value={context.state.cardStore.flop2.value}
+        face={context.state.cardStore.flop2.face}
         clickHandler={tableClickHandler}
       />
       <Card
@@ -137,7 +139,7 @@ const PokerTable = (props) => {
         group="tableCard"
         id="flop3"
         suit={context.state.cardStore.flop3.suit}
-        value={context.state.cardStore.flop3.value}
+        face={context.state.cardStore.flop3.face}
         clickHandler={tableClickHandler}
       />
       <Card
@@ -145,7 +147,7 @@ const PokerTable = (props) => {
         group="tableCard"
         id="turn"
         suit={context.state.cardStore.turn.suit}
-        value={context.state.cardStore.turn.value}
+        face={context.state.cardStore.turn.face}
         clickHandler={tableClickHandler}
       />
       <Card
@@ -153,7 +155,7 @@ const PokerTable = (props) => {
         group="tableCard"
         id="river"
         suit={context.state.cardStore.river.suit}
-        value={context.state.cardStore.river.value}
+        face={context.state.cardStore.river.face}
         clickHandler={tableClickHandler}
       />
     </div>
