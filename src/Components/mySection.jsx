@@ -7,12 +7,12 @@ import { CardContext } from "../cardStore.js";
 
 import "../Styles/mySection.css";
 
-const MySection = props => {
+const MySection = (props) => {
   const context = useContext(CardContext);
   let [selectedCard, setSelectedCard] = useState("");
   let [cardsSet, setCardsSet] = useState([false, false]);
 
-  const myHandClickHandler = event => {
+  const myHandClickHandler = (event) => {
     if (event.target.id !== selectedCard) {
       let numPopperRef = document.querySelector("#numPopuptable");
       numPopperRef.style.display = "none";
@@ -22,16 +22,16 @@ const MySection = props => {
     let popperRef = document.querySelector("#popuphand");
     popperRef.style.display = "block";
 
-    const popper = createPopper(ref, popperRef, {
+    createPopper(ref, popperRef, {
       placement: "top",
       modifiers: [
         {
           name: "offset",
           options: {
-            offset: [0, 6]
-          }
-        }
-      ]
+            offset: [0, 6],
+          },
+        },
+      ],
     });
   };
   const suitHandler = (event, suit) => {
@@ -42,26 +42,26 @@ const MySection = props => {
     let numPopperRef = document.querySelector("#numPopuphand");
     numPopperRef.style.display = "flex";
 
-    const popper = createPopper(suitPopperRef, numPopperRef, {
+    createPopper(suitPopperRef, numPopperRef, {
       placement: "top",
       modifiers: [
         {
           name: "offset",
           options: {
-            offset: [0, 16]
-          }
-        }
-      ]
+            offset: [0, 16],
+          },
+        },
+      ],
     });
   };
 
-  const numHandler = event => {
+  const numHandler = (event) => {
     console.log("number handler hand");
     let temp = event.target.id;
 
     context.setValue(selectedCard, temp);
 
-    if (selectedCard == "handOne") {
+    if (selectedCard === "handOne") {
       let tempCards = cardsSet;
       tempCards[0] = !tempCards[0];
       setCardsSet(tempCards);

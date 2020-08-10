@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Prediction from "./prediction.jsx";
 import "../Styles/prediction-area.css";
 
 class PredictionArea extends Component {
