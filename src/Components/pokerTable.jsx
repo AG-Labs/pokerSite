@@ -7,12 +7,12 @@ import { CardContext } from "../cardStore.js";
 
 import "../Styles/table.css";
 
-const PokerTable = props => {
+const PokerTable = (props) => {
   const context = useContext(CardContext);
   let [selectedCard, setSelectedCard] = useState("");
   let [cardsSet, setCardsSet] = useState([false, false, false, false, false]);
 
-  const tableClickHandler = event => {
+  const tableClickHandler = (event) => {
     if (context.state.allowTable) {
       if (
         event.target.id.match(/flop/g) ||
@@ -29,16 +29,16 @@ const PokerTable = props => {
         let popperRef = document.querySelector("#popuptable");
         popperRef.style.display = "block";
 
-        const popper = createPopper(ref, popperRef, {
+        createPopper(ref, popperRef, {
           placement: "bottom",
           modifiers: [
             {
               name: "offset",
               options: {
-                offset: [0, 6]
-              }
-            }
-          ]
+                offset: [0, 6],
+              },
+            },
+          ],
         });
       }
     }
@@ -51,20 +51,20 @@ const PokerTable = props => {
     let numPopperRef = document.querySelector("#numPopuptable");
     numPopperRef.style.display = "flex";
 
-    const popper = createPopper(suitPopperRef, numPopperRef, {
+    createPopper(suitPopperRef, numPopperRef, {
       placement: "bottom",
       modifiers: [
         {
           name: "offset",
           options: {
-            offset: [0, 16]
-          }
-        }
-      ]
+            offset: [0, 16],
+          },
+        },
+      ],
     });
   };
 
-  const numHandler = event => {
+  const numHandler = (event) => {
     console.log("number handler table");
     let temp = event.target.id;
     context.setValue(selectedCard, temp);
@@ -77,7 +77,7 @@ const PokerTable = props => {
     numPopperRef.style.display = "none";
   };
 
-  let setTableCard = inputCard => {
+  let setTableCard = (inputCard) => {
     let tempCards = cardsSet;
     switch (inputCard) {
       case "flop1":
@@ -117,54 +117,44 @@ const PokerTable = props => {
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card
-        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="flop1"
         suit={context.state.cardStore.flop1.suit}
         value={context.state.cardStore.flop1.value}
         clickHandler={tableClickHandler}
-        fullSize={true}
       />
       <Card
-        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="flop2"
         suit={context.state.cardStore.flop2.suit}
         value={context.state.cardStore.flop2.value}
         clickHandler={tableClickHandler}
-        fullSize={true}
       />
       <Card
-        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="flop3"
         suit={context.state.cardStore.flop3.suit}
         value={context.state.cardStore.flop3.value}
         clickHandler={tableClickHandler}
-        fullSize={true}
       />
       <Card
-        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="turn"
         suit={context.state.cardStore.turn.suit}
         value={context.state.cardStore.turn.value}
         clickHandler={tableClickHandler}
-        fullSize={true}
       />
       <Card
-        alterCardStore={props.alterCardStore}
         styleGroup="tableCards"
         group="tableCard"
         id="river"
         suit={context.state.cardStore.river.suit}
         value={context.state.cardStore.river.value}
         clickHandler={tableClickHandler}
-        fullSize={true}
       />
     </div>
   );

@@ -3,21 +3,16 @@ import Axios from "axios";
 
 export const CardContext = React.createContext();
 
-let cardDesc = {
-  value: "",
-  suit: ""
-};
-
 class ContextProvider extends Component {
   state = {
     cardStore: {
-      handOne: cardDesc,
-      handTwo: cardDesc,
-      flop1: cardDesc,
-      flop2: cardDesc,
-      flop3: cardDesc,
-      turn: cardDesc,
-      river: cardDesc
+      handOne: {},
+      handTwo: {},
+      flop1: {},
+      flop2: {},
+      flop3: {},
+      turn: {},
+      river: {}
     },
     allowTable: false,
     allowTurn: false,

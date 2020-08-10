@@ -26,16 +26,8 @@ import king from "../Images/numbers/King.png";
 class Card extends Component {
   constructor(props) {
     super(props);
-    this.props.startingVal
-      ? (this.state = { cardPic: cardFront })
-      : (this.state = { cardPic: cardBack });
+    this.state = { cardPic: cardBack };
     this.changePhoto = this.changePhoto.bind(this);
-  }
-
-  componentWillMount() {
-    if (!this.props.fullSize) {
-      this.changePhoto(this.props.initial.suit, this.props.initial.value);
-    }
   }
 
   componentDidUpdate(oldProps) {
@@ -67,7 +59,7 @@ class Card extends Component {
   };
 
   checkTypes() {
-    if (this.props.suit !== "" && this.props.value !== "") {
+    if (this.props.suit !== undefined && this.props.value !== undefined) {
       this.changePhoto(this.props.suit, this.props.value);
     }
   }
