@@ -43,7 +43,7 @@ class Card extends Component {
     spade: spade,
   };
   numbers = {
-    one: one,
+    Ace: one,
     two: two,
     three: three,
     four: four,
