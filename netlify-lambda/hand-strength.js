@@ -41,25 +41,7 @@ exports.handler = async (event) => {
     let combinations = generateCombinations(filteredCards, 5);
     let results = [];
     for (let combo of combinations) {
-      results = [
-        ...results,
-        rankPokerHand(
-          [
-            values[combo[0].face],
-            values[combo[1].face],
-            values[combo[2].face],
-            values[combo[3].face],
-            values[combo[4].face],
-          ],
-          [
-            suits[combo[0].suit],
-            suits[combo[1].suit],
-            suits[combo[2].suit],
-            suits[combo[3].suit],
-            suits[combo[4].suit],
-          ]
-        ),
-      ];
+      results = [...results, rankPokerHand(combo)];
     }
     console.log(results);
 
@@ -101,19 +83,33 @@ function generateCombinations(sourceArray, comboLength) {
   return combos;
 }
 
-function rankPokerHand(cs, ss) {
+function rankPokerHand(hand) {
   var v,
     i,
     o,
     s =
-      (1 << cs[0]) | (1 << cs[1]) | (1 << cs[2]) | (1 << cs[3]) | (1 << cs[4]);
-  for (i = -1, v = o = 0; i < 5; i++, o = Math.pow(2, cs[i] * 4)) {
+      (1 << values[hand[0].face]) |
+      (1 << values[hand[1].face]) |
+      (1 << values[hand[2].face]) |
+      (1 << values[hand[3].face]) |
+      (1 << values[hand[4].face]);
+  for (
+    i = -1, v = o = 0;
+    i < 5;
+    i++, o = Math.pow(2, values[hand[i]?.face] * 4)
+  ) {
     v += o * (((v / o) & 15) + 1);
   }
   v = (v % 15) - (s / (s & -s) == 31 || s == 0x403c ? 3 : 1);
-  v -= (ss[0] == (ss[1] | ss[2] | ss[3] | ss[4])) * (s == 0x7c00 ? -5 : 1);
+  v -=
+    (suits[hand[0].suit] ==
+      (suits[hand[1].suit] |
+        suits[hand[2].suit] |
+        suits[hand[3].suit] |
+        suits[hand[4].suit])) *
+    (s == 0x7c00 ? -5 : 1);
 
-  return hands[v].name + (s == 0x403c ? " (Ace low)" : "");
+  return { result: hands[v].name + (s == 0x403c ? " (Ace low)" : ""), hand };
 }
 
 let calculateBest = () => {
