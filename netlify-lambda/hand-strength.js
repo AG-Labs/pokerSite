@@ -18,16 +18,16 @@ const suits = { spade: 1, club: 2, heart: 4, diamond: 8 };
 const filterer = (card) => Object.keys(card).length !== 0;
 
 const hands = [
-  { name: "4 of a Kind", rank: 3 },
-  { name: "Straight Flush", rank: 2 },
-  { name: "Straight", rank: 6 },
-  { name: "Flush", rank: 5 },
-  { name: "High Card", rank: 10 },
-  { name: "1 Pair", rank: 9 },
-  { name: "2 Pair", rank: 8 },
-  { name: "Royal Flush", rank: 1 },
-  { name: "3 of a Kind", rank: 7 },
-  { name: "Full House", rank: 4 },
+  { name: "4 of a Kind", rank: 8 },
+  { name: "Straight Flush", rank: 9 },
+  { name: "Straight", rank: 5 },
+  { name: "Flush", rank: 6 },
+  { name: "High Card", rank: 1 },
+  { name: "1 Pair", rank: 2 },
+  { name: "2 Pair", rank: 3 },
+  { name: "Royal Flush", rank: 10 },
+  { name: "3 of a Kind", rank: 4 },
+  { name: "Full House", rank: 7 },
 ];
 
 exports.handler = async (event) => {
@@ -43,7 +43,10 @@ exports.handler = async (event) => {
     for (let combo of combinations) {
       results = [...results, rankPokerHand(combo)];
     }
-    console.log(results);
+    console.log("got results");
+    let bestResult = calculateBest(results);
+    console.log("got best result");
+    console.log(bestResult);
 
     return { statusCode: 200, body: JSON.stringify(results) };
   } else {
@@ -112,7 +115,16 @@ function rankPokerHand(hand) {
   return { result: hands[v].name + (s == 0x403c ? " (Ace low)" : ""), hand };
 }
 
-let calculateBest = () => {
-  let bestHand = { name: "good", cards: ["some cards"] };
+let calculateBest = (results) => {
+  let bestHand = { rank: 0 };
+  for (let result of results) {
+    let somthing = hands.find((rank, index) => {
+      if (rank.name == result.result) return true;
+    });
+    if (somthing.rank > bestHand.rank) {
+      bestHand = somthing;
+    }
+  }
+
   return bestHand;
 };
