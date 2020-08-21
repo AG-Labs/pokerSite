@@ -87,10 +87,6 @@ const MySection = (props) => {
   return (
     <>
       <div className="left">
-        <div className="meter">
-          <div className="power">60%</div>
-        </div>
-
         <div className="myHand">
           <SuitPopper suitHandler={suitHandler} idAddition="hand" />
           <NumberPopper numHandler={numHandler} idAddition="hand" />
