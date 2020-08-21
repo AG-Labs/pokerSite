@@ -61,8 +61,14 @@ class Card extends Component {
   checkTypes() {
     if (this.props.suit !== undefined && this.props.face !== undefined) {
       this.changePhoto(this.props.suit, this.props.face);
+    } else {
+      this.resetPhoto();
     }
   }
+
+  resetPhoto = () => {
+    this.setState({ cardPic: cardBack });
+  };
 
   changePhoto = (setSuit, setNum) => {
     mergeImages([

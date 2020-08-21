@@ -3,21 +3,23 @@ import Axios from "axios";
 
 export const CardContext = React.createContext();
 
+const initState = {
+  cardStore: {
+    handOne: {},
+    handTwo: {},
+    flop1: {},
+    flop2: {},
+    flop3: {},
+    turn: {},
+    river: {},
+  },
+  allowTable: false,
+  allowTurn: false,
+  allowRiver: false,
+};
+
 class ContextProvider extends Component {
-  state = {
-    cardStore: {
-      handOne: {},
-      handTwo: {},
-      flop1: {},
-      flop2: {},
-      flop3: {},
-      turn: {},
-      river: {},
-    },
-    allowTable: false,
-    allowTurn: false,
-    allowRiver: false,
-  };
+  state = initState;
 
   getLambda = () => {
     Axios.post("/.netlify/functions/hand-strength", {
@@ -69,6 +71,9 @@ class ContextProvider extends Component {
           },
           setRiver: (input) => {
             this.setState({ allowRiver: input }, this.getLambda);
+          },
+          reset: () => {
+            this.setState(initState);
           },
         }}
       >

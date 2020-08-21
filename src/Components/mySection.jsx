@@ -87,6 +87,15 @@ const MySection = (props) => {
   return (
     <>
       <div className="left">
+        <div className="reset">
+          <button
+            onClick={() => {
+              context.reset();
+            }}
+          >
+            reset
+          </button>
+        </div>
         <div className="myHand">
           <SuitPopper suitHandler={suitHandler} idAddition="hand" />
           <NumberPopper numHandler={numHandler} idAddition="hand" />
