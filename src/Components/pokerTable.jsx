@@ -65,7 +65,6 @@ const PokerTable = (props) => {
   };
 
   const numHandler = (event) => {
-    console.log("number handler table");
     let temp = event.target.id;
     context.setFace(selectedCard, temp);
     setTableCard(selectedCard);
@@ -114,8 +113,6 @@ const PokerTable = (props) => {
 
   return (
     <div className="Table">
-      {console.log(context)}
-
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card

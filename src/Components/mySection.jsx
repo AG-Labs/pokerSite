@@ -35,7 +35,6 @@ const MySection = (props) => {
     });
   };
   const suitHandler = (event, suit) => {
-    console.log("suit handler hand");
     context.setSuit(selectedCard, suit);
 
     let suitPopperRef = document.querySelector("#" + event.target.id);
@@ -56,7 +55,6 @@ const MySection = (props) => {
   };
 
   const numHandler = (event) => {
-    console.log("number handler hand");
     let temp = event.target.id;
 
     context.setFace(selectedCard, temp);

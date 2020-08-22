@@ -16,6 +16,7 @@ const initState = {
   allowTable: false,
   allowTurn: false,
   allowRiver: false,
+  calculations: [],
 };
 
 class ContextProvider extends Component {
@@ -26,7 +27,10 @@ class ContextProvider extends Component {
       cards: this.state.cardStore,
     })
       .then((resp) => {
-        console.log(resp);
+        if (!resp.data.hasOwnProperty("message")) {
+          console.log(resp.data);
+          this.setState({ calculations: resp.data });
+        }
       })
       .catch((err) => {
         console.log(err);
