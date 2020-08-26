@@ -4,6 +4,7 @@ import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
 import Card from "./card";
 import { CardContext } from "../cardStore.js";
+import { AiOutlineReload } from "react-icons/ai";
 
 import "../Styles/mySection.css";
 
@@ -35,7 +36,6 @@ const MySection = (props) => {
     });
   };
   const suitHandler = (event, suit) => {
-    console.log("suit handler hand");
     context.setSuit(selectedCard, suit);
 
     let suitPopperRef = document.querySelector("#" + event.target.id);
@@ -56,7 +56,6 @@ const MySection = (props) => {
   };
 
   const numHandler = (event) => {
-    console.log("number handler hand");
     let temp = event.target.id;
 
     context.setFace(selectedCard, temp);
@@ -93,7 +92,7 @@ const MySection = (props) => {
               context.reset();
             }}
           >
-            reset
+            <AiOutlineReload size="1.5em" />
           </button>
         </div>
         <div className="myHand">
