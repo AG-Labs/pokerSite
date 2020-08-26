@@ -43,20 +43,15 @@ exports.handler = async (event) => {
     for (let combo of combinations) {
       results = [...results, rankPokerHand(combo)];
     }
-    console.log("got results");
     let bestResult = calculateBest(results);
-    console.log("got best result");
-    console.log(bestResult);
 
-    return { statusCode: 200, body: JSON.stringify(results) };
+    return { statusCode: 200, body: JSON.stringify(bestResult) };
   } else {
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "waiting until table cards are dealt" }),
     };
   }
-
-  return { statusCode: 200, body: "hello" };
 };
 
 function generateCombinations(sourceArray, comboLength) {
@@ -87,6 +82,7 @@ function generateCombinations(sourceArray, comboLength) {
 }
 
 function rankPokerHand(hand) {
+  //maths taken from https://www.codeproject.com/Articles/569271/A-Poker-hand-analyzer-in-JavaScript-using-bit-math
   var v,
     i,
     o,
@@ -116,13 +112,18 @@ function rankPokerHand(hand) {
 }
 
 let calculateBest = (results) => {
-  let bestHand = { rank: 0 };
+  let bestRank = { rank: 0 };
+  let bestHand = [];
+
   for (let result of results) {
-    let somthing = hands.find((rank, index) => {
+    let foundRank = hands.find((rank, index) => {
       if (rank.name == result.result) return true;
     });
-    if (somthing.rank > bestHand.rank) {
-      bestHand = somthing;
+    if (foundRank.rank > bestRank.rank) {
+      bestRank = foundRank;
+      bestHand = [result];
+    } else if (foundRank.rank === bestRank.rank) {
+      bestHand.push(result);
     }
   }
 
