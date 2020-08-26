@@ -59,7 +59,7 @@ const MySection = (props) => {
     console.log("number handler hand");
     let temp = event.target.id;
 
-    context.setValue(selectedCard, temp);
+    context.setFace(selectedCard, temp);
 
     if (selectedCard === "handOne") {
       let tempCards = cardsSet;
@@ -99,7 +99,7 @@ const MySection = (props) => {
             group="myCard"
             id="handOne"
             suit={context.state.cardStore.handOne.suit}
-            value={context.state.cardStore.handOne.value}
+            face={context.state.cardStore.handOne.face}
             clickHandler={myHandClickHandler}
           />
           <Card
@@ -107,7 +107,7 @@ const MySection = (props) => {
             group="myCard"
             id="handTwo"
             suit={context.state.cardStore.handTwo.suit}
-            value={context.state.cardStore.handTwo.value}
+            face={context.state.cardStore.handTwo.face}
             clickHandler={myHandClickHandler}
           />
         </div>

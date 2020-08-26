@@ -43,7 +43,7 @@ const NumberPopper = (props) => {
       <p id="king" className="numPopper" onClick={(e) => props.numHandler(e)}>
         K
       </p>
-      <p id="one" className="numPopper" onClick={(e) => props.numHandler(e)}>
+      <p id="ace" className="numPopper" onClick={(e) => props.numHandler(e)}>
         A
       </p>
       <div className="arrow" data-popper-arrow></div>
