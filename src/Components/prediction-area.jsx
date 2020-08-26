@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import { CardContext } from "../cardStore.js";
+import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
+import Prediction from "./prediction.jsx";
 
 import "../Styles/prediction-area.css";
 
@@ -30,27 +32,44 @@ const PredictionArea = (props) => {
   let counter =
     context.state.calculations.length === 0
       ? null
-      : `${handSelector + 1}/${context.state.calculations.length}`;
+      : `- ${handSelector + 1}/${context.state.calculations.length}`;
+
+  let prediction =
+    context.state.calculations.length === 0 ? null : (
+      <Prediction predictions={context.state.calculations[handSelector].hand} />
+    );
 
   return (
     <>
-      <button
-        onClick={() => {
-          prev();
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
         }}
       >
-        Prev
-      </button>
-      <p className="predictionTitle">Possible Hands</p>
-      <button
-        onClick={() => {
-          next();
-        }}
-      >
-        Next
-      </button>
+        <div>
+          <button
+            onClick={() => {
+              prev();
+            }}
+          >
+            <AiOutlineLeftCircle size="1.5em" />
+          </button>
+        </div>
+        <p className="predictionTitle">Possible Hands {counter}</p>
+        <div>
+          <button
+            onClick={() => {
+              next();
+            }}
+          >
+            <AiOutlineRightCircle size="1.5em" />
+          </button>
+        </div>
+      </div>
       <div>{message}</div>
-      <div>{counter}</div>
+      {prediction}
     </>
   );
 };

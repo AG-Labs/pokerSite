@@ -4,6 +4,7 @@ import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
 import Card from "./card";
 import { CardContext } from "../cardStore.js";
+import { AiOutlineReload } from "react-icons/ai";
 
 import "../Styles/mySection.css";
 
@@ -91,7 +92,7 @@ const MySection = (props) => {
               context.reset();
             }}
           >
-            reset
+            <AiOutlineReload size="1.5em" />
           </button>
         </div>
         <div className="myHand">

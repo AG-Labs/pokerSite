@@ -28,7 +28,6 @@ class ContextProvider extends Component {
     })
       .then((resp) => {
         if (!resp.data.hasOwnProperty("message")) {
-          console.log(resp.data);
           this.setState({ calculations: resp.data });
         }
       })
