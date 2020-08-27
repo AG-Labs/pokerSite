@@ -4,6 +4,7 @@ import SuitPopper from "./suit-popper.jsx";
 import NumberPopper from "./number-popper";
 import Card from "./card";
 import { CardContext } from "../cardStore.js";
+import { AiOutlineReload } from "react-icons/ai";
 
 import "../Styles/mySection.css";
 
@@ -35,7 +36,6 @@ const MySection = (props) => {
     });
   };
   const suitHandler = (event, suit) => {
-    console.log("suit handler hand");
     context.setSuit(selectedCard, suit);
 
     let suitPopperRef = document.querySelector("#" + event.target.id);
@@ -56,10 +56,9 @@ const MySection = (props) => {
   };
 
   const numHandler = (event) => {
-    console.log("number handler hand");
     let temp = event.target.id;
 
-    context.setValue(selectedCard, temp);
+    context.setFace(selectedCard, temp);
 
     if (selectedCard === "handOne") {
       let tempCards = cardsSet;
@@ -87,10 +86,15 @@ const MySection = (props) => {
   return (
     <>
       <div className="left">
-        <div className="meter">
-          <div className="power">60%</div>
+        <div className="reset">
+          <button
+            onClick={() => {
+              context.reset();
+            }}
+          >
+            <AiOutlineReload size="1.5em" />
+          </button>
         </div>
-
         <div className="myHand">
           <SuitPopper suitHandler={suitHandler} idAddition="hand" />
           <NumberPopper numHandler={numHandler} idAddition="hand" />
@@ -99,7 +103,7 @@ const MySection = (props) => {
             group="myCard"
             id="handOne"
             suit={context.state.cardStore.handOne.suit}
-            value={context.state.cardStore.handOne.value}
+            face={context.state.cardStore.handOne.face}
             clickHandler={myHandClickHandler}
           />
           <Card
@@ -107,7 +111,7 @@ const MySection = (props) => {
             group="myCard"
             id="handTwo"
             suit={context.state.cardStore.handTwo.suit}
-            value={context.state.cardStore.handTwo.value}
+            face={context.state.cardStore.handTwo.face}
             clickHandler={myHandClickHandler}
           />
         </div>
