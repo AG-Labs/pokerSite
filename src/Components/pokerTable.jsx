@@ -104,10 +104,10 @@ const PokerTable = (props) => {
         break;
     }
     if (tempCards.slice(0, 3).every(Boolean) && !context.state.allowTurn) {
-      context.setTurn(true);
+      context.allowTurn(true);
     }
     if (tempCards.slice(0, 4).every(Boolean)) {
-      context.setRiver(true);
+      context.allowRiver(true);
     }
   };
 
