@@ -36,6 +36,16 @@ class ContextProvider extends Component {
       });
   };
 
+  updateAny = () => {
+    if (
+      this.state.allowTable ||
+      this.state.allowTurn ||
+      this.state.allowRiver
+    ) {
+      this.getLambda();
+    }
+  };
+
   render() {
     return (
       <CardContext.Provider
@@ -54,30 +64,39 @@ class ContextProvider extends Component {
             });
           },
           setFace: (selectedCard, face) => {
-            this.setState((prevState) => {
-              let newCard = Object.assign(
-                {},
-                prevState.cardStore[selectedCard]
-              );
-              newCard.face = face;
-              return {
-                cardStore: { ...prevState.cardStore, [selectedCard]: newCard },
-              };
-            });
+            this.setState(
+              (prevState) => {
+                let newCard = Object.assign(
+                  {},
+                  prevState.cardStore[selectedCard]
+                );
+                newCard.face = face;
+                return {
+                  cardStore: {
+                    ...prevState.cardStore,
+                    [selectedCard]: newCard,
+                  },
+                };
+              },
+              () => {
+                this.updateAny();
+              }
+            );
           },
           getLambda: this.getLambda,
-          setTable: (input) => {
+          allowTable: (input) => {
             this.setState({ allowTable: input }, this.getLambda);
           },
-          setTurn: (input) => {
+          allowTurn: (input) => {
             this.setState({ allowTurn: input }, this.getLambda);
           },
-          setRiver: (input) => {
+          allowRiver: (input) => {
             this.setState({ allowRiver: input }, this.getLambda);
           },
           reset: () => {
             this.setState(initState);
           },
+          updateAny: this.updateAny,
         }}
       >
         {this.props.children}

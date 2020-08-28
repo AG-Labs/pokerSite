@@ -65,14 +65,14 @@ const MySection = (props) => {
       tempCards[0] = !tempCards[0];
       setCardsSet(tempCards);
       if (tempCards.every(Boolean)) {
-        context.setTable(true);
+        context.allowTable(true);
       }
     } else {
       let tempCards = cardsSet;
       tempCards[1] = !tempCards[1];
       setCardsSet(tempCards);
       if (tempCards.every(Boolean)) {
-        context.setTable(true);
+        context.allowTable(true);
       }
     }
 
