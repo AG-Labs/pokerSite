@@ -12,13 +12,16 @@ const PokerTable = (props) => {
   let [selectedCard, setSelectedCard] = useState("");
   let [cardsSet, setCardsSet] = useState([false, false, false, false, false]);
 
-  const tableClickHandler = (event) => {
+  let allowTable = Object.keys(context.state.cardStore.handOne).length >1 && Object.keys(context.state.cardStore.handTwo).length >1
+  let allowTurn = allowTable && Object.keys(context.state.cardStore.flop1).length > 1 && Object.keys(context.state.cardStore.flop2).length >1 && Object.keys(context.state.cardStore.flop3).length >1
+  let allowRiver = allowTurn && Object.keys(context.state.cardStore.turn).length >1
 
-    if (Object.keys(context.state.cardStore.handOne).length !==0 && Object.keys(context.state.cardStore.handTwo).length !==0) {
+  const tableClickHandler = (event) => {
+    if (allowTable) {
       if (
         event.target.id.match(/flop/g) ||
-        (event.target.id.match(/turn/g) && context.state.allowTurn) ||
-        (event.target.id.match(/river/g) && context.state.allowRiver)
+        (event.target.id.match(/turn/g) && allowTurn) ||
+        (event.target.id.match(/river/g) && allowRiver)
       ) {
         if (event.target.id !== selectedCard) {
           let numPopperRef = document.querySelector("#numPopuptable");
@@ -104,16 +107,14 @@ const PokerTable = (props) => {
         console.error("shouldnt have been able to get here");
         break;
     }
-    if (tempCards.slice(0, 3).every(Boolean) && !context.state.allowTurn) {
-      context.allowTurn(true);
-    }
-    if (tempCards.slice(0, 4).every(Boolean)) {
-      context.allowRiver(true);
-    }
   };
 
+  let printState = ()=>{
+    console.dir(context.state.cardStore)
+  }
   return (
     <div className="Table">
+      {process.env.NODE_ENV ==='development'?<button style={{position:'absolute', left:20}} onClick={printState}>Print State</button>:null}
       <SuitPopper suitHandler={suitHandler} idAddition="table" />
       <NumberPopper numHandler={numHandler} idAddition="table" />
       <Card

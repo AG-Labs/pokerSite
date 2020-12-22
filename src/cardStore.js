@@ -13,8 +13,6 @@ const initState = {
     turn: {},
     river: {},
   },
-  allowTurn: false,
-  allowRiver: false,
   calculations: [],
 };
 
@@ -25,10 +23,9 @@ function duplicateCards(currentCards, newCard) {
       currentCards[card].suit === newCard.suit
     ) {
       return true;
-    } else {
-      return false;
     }
   }
+  return false;
 }
 
 function createCard(oldCard, newSuit, newFace) {
@@ -60,10 +57,18 @@ class ContextProvider extends Component {
   };
 
   updateAny = () => {
-    let allowTableVar =
-      Object.keys(this.state.cardStore.handOne).length !== 0 &&
-      Object.keys(this.state.cardStore.handTwo).length !== 0;
-    if (allowTableVar || this.state.allowTurn || this.state.allowRiver) {
+    let noSet = Object.values(this.state.cardStore).reduce(
+      (cumulative, current) => {
+        if (Object.keys(current).length > 1) {
+          return cumulative + 1;
+        } else {
+          return cumulative;
+        }
+      },
+      0
+    );
+
+    if (noSet === 2 || noSet === 5 || noSet === 6 || noSet === 7) {
       this.getLambda();
     }
   };
@@ -94,7 +99,6 @@ class ContextProvider extends Component {
             );
 
             if (!duplicateCards(this.state.cardStore, newCard)) {
-              console.log("setting card");
               this.setState(
                 (prevState) => {
                   return {
@@ -114,12 +118,6 @@ class ContextProvider extends Component {
             }
           },
           getLambda: this.getLambda,
-          allowTurn: (input) => {
-            this.setState({ allowTurn: input }, this.getLambda);
-          },
-          allowRiver: (input) => {
-            this.setState({ allowRiver: input }, this.getLambda);
-          },
           reset: () => {
             this.setState(initState);
           },
