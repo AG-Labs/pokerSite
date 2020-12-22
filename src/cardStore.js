@@ -19,6 +19,26 @@ const initState = {
   calculations: [],
 };
 
+function duplicateCards(cards) {
+  /* loop over cards
+  loop again and check for duplicate
+  */
+  console.log("-----HERE-------");
+  console.log(cards);
+  return false;
+}
+
+function createCard(oldCard, newSuit, newFace) {
+  let newCard = Object.assign({}, oldCard);
+  if (newSuit) {
+    newCard.suit = newSuit;
+  }
+  if (newFace) {
+    newCard.face = newFace;
+  }
+  return newCard;
+}
+
 class ContextProvider extends Component {
   state = initState;
 
@@ -53,24 +73,26 @@ class ContextProvider extends Component {
           state: this.state,
           setSuit: (selectedCard, suit) => {
             this.setState((prevState) => {
-              let newCard = Object.assign(
-                {},
-                prevState.cardStore[selectedCard]
+              let newCard = createCard(
+                prevState.cardStore[selectedCard],
+                suit,
+                null
               );
-              newCard.suit = suit;
               return {
                 cardStore: { ...prevState.cardStore, [selectedCard]: newCard },
               };
             });
           },
           setFace: (selectedCard, face) => {
+            duplicateCards(this.state.cardStore);
+
             this.setState(
               (prevState) => {
-                let newCard = Object.assign(
-                  {},
-                  prevState.cardStore[selectedCard]
+                let newCard = createCard(
+                  prevState.cardStore[selectedCard],
+                  null,
+                  face
                 );
-                newCard.face = face;
                 return {
                   cardStore: {
                     ...prevState.cardStore,
