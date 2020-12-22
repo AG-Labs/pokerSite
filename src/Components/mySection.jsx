@@ -60,22 +60,6 @@ const MySection = (props) => {
 
     context.setFace(selectedCard, temp);
 
-    if (selectedCard === "handOne") {
-      let tempCards = cardsSet;
-      tempCards[0] = !tempCards[0];
-      setCardsSet(tempCards);
-      if (tempCards.every(Boolean)) {
-        context.allowTable(true);
-      }
-    } else {
-      let tempCards = cardsSet;
-      tempCards[1] = !tempCards[1];
-      setCardsSet(tempCards);
-      if (tempCards.every(Boolean)) {
-        context.allowTable(true);
-      }
-    }
-
     let popperRef = document.querySelector("#popuphand");
     let numPopperRef = document.querySelector("#numPopuphand");
 

@@ -13,19 +13,22 @@ const initState = {
     turn: {},
     river: {},
   },
-  allowTable: false,
   allowTurn: false,
   allowRiver: false,
   calculations: [],
 };
 
-function duplicateCards(cards) {
-  /* loop over cards
-  loop again and check for duplicate
-  */
-  console.log("-----HERE-------");
-  console.log(cards);
-  return false;
+function duplicateCards(currentCards, newCard) {
+  for (const card in currentCards) {
+    if (
+      currentCards[card].face === newCard.face &&
+      currentCards[card].suit === newCard.suit
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 function createCard(oldCard, newSuit, newFace) {
@@ -57,11 +60,10 @@ class ContextProvider extends Component {
   };
 
   updateAny = () => {
-    if (
-      this.state.allowTable ||
-      this.state.allowTurn ||
-      this.state.allowRiver
-    ) {
+    let allowTableVar =
+      Object.keys(this.state.cardStore.handOne).length !== 0 &&
+      Object.keys(this.state.cardStore.handTwo).length !== 0;
+    if (allowTableVar || this.state.allowTurn || this.state.allowRiver) {
       this.getLambda();
     }
   };
@@ -91,24 +93,27 @@ class ContextProvider extends Component {
               face
             );
 
-            this.setState(
-              (prevState) => {
-                return {
-                  cardStore: {
-                    ...prevState.cardStore,
-                    [selectedCard]: newCard,
-                  },
-                };
-              },
-              () => {
-                this.updateAny();
-              }
-            );
+            if (!duplicateCards(this.state.cardStore, newCard)) {
+              console.log("setting card");
+              this.setState(
+                (prevState) => {
+                  return {
+                    cardStore: {
+                      ...prevState.cardStore,
+                      [selectedCard]: newCard,
+                    },
+                  };
+                },
+                () => {
+                  this.updateAny();
+                }
+              );
+            } else {
+              //animate the card
+              console.log("hit the dupe bit");
+            }
           },
           getLambda: this.getLambda,
-          allowTable: (input) => {
-            this.setState({ allowTable: input }, this.getLambda);
-          },
           allowTurn: (input) => {
             this.setState({ allowTurn: input }, this.getLambda);
           },

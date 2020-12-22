@@ -13,7 +13,8 @@ const PokerTable = (props) => {
   let [cardsSet, setCardsSet] = useState([false, false, false, false, false]);
 
   const tableClickHandler = (event) => {
-    if (context.state.allowTable) {
+
+    if (Object.keys(context.state.cardStore.handOne).length !==0 && Object.keys(context.state.cardStore.handTwo).length !==0) {
       if (
         event.target.id.match(/flop/g) ||
         (event.target.id.match(/turn/g) && context.state.allowTurn) ||
