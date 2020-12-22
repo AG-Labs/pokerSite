@@ -72,27 +72,27 @@ class ContextProvider extends Component {
         value={{
           state: this.state,
           setSuit: (selectedCard, suit) => {
+            let newCard = createCard(
+              this.state.cardStore[selectedCard],
+              suit,
+              null
+            );
+
             this.setState((prevState) => {
-              let newCard = createCard(
-                prevState.cardStore[selectedCard],
-                suit,
-                null
-              );
               return {
                 cardStore: { ...prevState.cardStore, [selectedCard]: newCard },
               };
             });
           },
           setFace: (selectedCard, face) => {
-            duplicateCards(this.state.cardStore);
+            let newCard = createCard(
+              this.state.cardStore[selectedCard],
+              null,
+              face
+            );
 
             this.setState(
               (prevState) => {
-                let newCard = createCard(
-                  prevState.cardStore[selectedCard],
-                  null,
-                  face
-                );
                 return {
                   cardStore: {
                     ...prevState.cardStore,
