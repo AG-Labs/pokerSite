@@ -11,7 +11,6 @@ import "../Styles/mySection.css";
 const MySection = (props) => {
   const context = useContext(CardContext);
   let [selectedCard, setSelectedCard] = useState("");
-  let [cardsSet, setCardsSet] = useState([false, false]);
 
   const myHandClickHandler = (event) => {
     if (event.target.id !== selectedCard) {
@@ -59,22 +58,6 @@ const MySection = (props) => {
     let temp = event.target.id;
 
     context.setFace(selectedCard, temp);
-
-    if (selectedCard === "handOne") {
-      let tempCards = cardsSet;
-      tempCards[0] = !tempCards[0];
-      setCardsSet(tempCards);
-      if (tempCards.every(Boolean)) {
-        context.allowTable(true);
-      }
-    } else {
-      let tempCards = cardsSet;
-      tempCards[1] = !tempCards[1];
-      setCardsSet(tempCards);
-      if (tempCards.every(Boolean)) {
-        context.allowTable(true);
-      }
-    }
 
     let popperRef = document.querySelector("#popuphand");
     let numPopperRef = document.querySelector("#numPopuphand");
