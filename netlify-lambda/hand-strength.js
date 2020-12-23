@@ -15,7 +15,28 @@ const values = {
 };
 const suits = { spade: 1, club: 2, heart: 4, diamond: 8 };
 
-const filterer = (card) => Object.keys(card).length !== 0;
+const filterer = (card) => Object.keys(card).length > 1;
+
+const duplicates = (cards) => {
+  for (let card in cards) {
+    let testCard = cards[card];
+    for (let underTest in cards) {
+      if (card !== underTest) {
+        underTestCard = cards[underTest];
+        if (
+          testCard.face === underTestCard.face &&
+          testCard.suit === underTestCard.suit
+        ) {
+          console.log(true);
+          return true;
+        }
+      }
+    }
+  }
+
+  console.log(false);
+  return false;
+};
 
 const hands = [
   { name: "4 of a Kind", rank: 8 },
@@ -34,7 +55,21 @@ exports.handler = async (event) => {
   let cards = JSON.parse(event.body).cards;
 
   let filteredCards = Object.values(cards).filter(filterer);
-  if (filteredCards.length >= 5) {
+  if (
+    filteredCards.length === 5 ||
+    filteredCards.length === 6 ||
+    filteredCards.length === 7
+  ) {
+    let allowedCards = duplicates(filteredCards);
+
+    if (allowedCards) {
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: "Invalid card supplied to calculator",
+        }),
+      };
+    }
     /**
      * return the best with the name and the cards that are needed
      */
