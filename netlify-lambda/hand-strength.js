@@ -27,14 +27,11 @@ const duplicates = (cards) => {
           testCard.face === underTestCard.face &&
           testCard.suit === underTestCard.suit
         ) {
-          console.log(true);
           return true;
         }
       }
     }
   }
-
-  console.log(false);
   return false;
 };
 

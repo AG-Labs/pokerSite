@@ -114,7 +114,6 @@ class ContextProvider extends Component {
               );
             } else {
               //animate the card
-              console.log("hit the dupe bit");
             }
           },
           getLambda: this.getLambda,
