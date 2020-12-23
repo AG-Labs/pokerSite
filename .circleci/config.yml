@@ -1,0 +1,117 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1.0
+  slack: circleci/slack@4.0.3
+
+jobs:
+  announce-build:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Starting build #<< pipeline.number >> on ${CIRCLE_BRANCH} in ${CIRCLE_PROJECT_REPONAME}"
+                  }
+                }
+              ]
+            }
+          event: always
+          channel: dev
+  dependency-install:
+    # Dependency install step means that all later parrallel steps will be able to use the cache
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+  check-formatting:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: |
+            npm run check
+          name: Format Check
+  dependency-audit:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: |
+            npm audit
+          name: Audit
+  notify-end-of-pipeline:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Build #<< pipeline.number >> on ${CIRCLE_BRANCH} in ${CIRCLE_PROJECT_REPONAME}"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Create PR"
+                      },
+                      "url": "<< pipeline.project.git_url >>"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Build"
+                      },
+                      "url": "https://app.circleci.com/pipelines/github/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
+                    }
+                  ]
+                }
+              ]
+            }
+          event: pass
+          channel: dev
+
+workflows:
+  main:
+    jobs:
+      - announce-build:
+          context: Slack
+      - dependency-install:
+          requires:
+            - announce-build
+      - node/test:
+          requires:
+            - dependency-install
+      - check-formatting:
+          requires:
+            - dependency-install
+      - dependency-audit:
+          requires:
+            - dependency-install
+      - notify-end-of-pipeline:
+          requires:
+            - node/test
+            - check-formatting
+            - dependency-audit
+          context: Slack

@@ -65,7 +65,7 @@ class ContextProvider extends Component {
           return cumulative;
         }
       },
-      0
+      0,
     );
 
     if (noSet === 2 || noSet === 5 || noSet === 6 || noSet === 7) {
@@ -82,7 +82,7 @@ class ContextProvider extends Component {
             let newCard = createCard(
               this.state.cardStore[selectedCard],
               suit,
-              null
+              null,
             );
 
             this.setState((prevState) => {
@@ -95,7 +95,7 @@ class ContextProvider extends Component {
             let newCard = createCard(
               this.state.cardStore[selectedCard],
               null,
-              face
+              face,
             );
 
             if (!duplicateCards(this.state.cardStore, newCard)) {
@@ -110,7 +110,7 @@ class ContextProvider extends Component {
                 },
                 () => {
                   this.updateAny();
-                }
+                },
               );
             } else {
               //animate the card
