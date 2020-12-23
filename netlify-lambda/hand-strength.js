@@ -161,3 +161,8 @@ let calculateBest = (results) => {
 
   return bestHand;
 };
+
+exports.generateCombinations = generateCombinations;
+exports.rankPokerHand = rankPokerHand;
+exports.calculateBest = calculateBest;
+exports.duplicates = duplicates;
