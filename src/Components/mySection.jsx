@@ -11,7 +11,6 @@ import "../Styles/mySection.css";
 const MySection = (props) => {
   const context = useContext(CardContext);
   let [selectedCard, setSelectedCard] = useState("");
-  let [cardsSet, setCardsSet] = useState([false, false]);
 
   const myHandClickHandler = (event) => {
     if (event.target.id !== selectedCard) {

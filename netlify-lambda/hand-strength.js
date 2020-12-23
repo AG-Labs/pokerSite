@@ -22,7 +22,7 @@ const duplicates = (cards) => {
     let testCard = cards[card];
     for (let underTest in cards) {
       if (card !== underTest) {
-        underTestCard = cards[underTest];
+        let underTestCard = cards[underTest];
         if (
           testCard.face === underTestCard.face &&
           testCard.suit === underTestCard.suit
