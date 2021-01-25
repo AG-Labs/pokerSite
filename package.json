@@ -5,14 +5,14 @@
   "proxy": "http://localhost/9000/",
   "dependencies": {
     "@popperjs/core": "^2.1.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "images": "^3.0.2",
     "merge-images": "^2.0.0",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.8",
     "react-dom": "^16.8.6",
     "react-icons": "^3.11.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,7 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:lambda": "netlify-lambda serve /netlify-lambda",
-    "build:lambda": "netlify-lambda build /netlify-lambda"
+    "build:lambda": "netlify-lambda build /netlify-lambda",
+    "check": "prettier --check \"./**/*.{js, jsx, json, yml}\" --config ./.prettierrc.json --ignore-path ./.prettierignore",
+    "pretty": "prettier --write \"./**/*.{js, jsx, json, yml}\" --config ./.prettierrc.json --ignore-path ./.prettierignore"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,6 +35,7 @@
   ],
   "devDependencies": {
     "http-proxy-middleware": "^1.0.3",
-    "netlify-lambda": "^1.6.3"
+    "netlify-lambda": "^1.6.3",
+    "prettier": "^2.2.1"
   }
 }
