@@ -5,7 +5,7 @@
   "proxy": "http://localhost/9000/",
   "dependencies": {
     "@popperjs/core": "^2.1.1",
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "images": "^3.0.2",
     "merge-images": "^2.0.0",
     "react": "^16.8.6",
